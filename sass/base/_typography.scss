@@ -1,0 +1,21 @@
+::selection {
+    background: #662bff;
+}
+
+::selection {
+    color: #fff;
+}
+
+::selection {
+    opacity: 1;
+}
+
+.iz-sub-title{
+    line-height: 1.5em;
+    color: #758294;
+    font-weight: 400;
+    &--small{
+        font-size: 14px;
+        line-height: 1.71em;
+    }
+}

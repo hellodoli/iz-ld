@@ -2,19 +2,25 @@
 // ===============================
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap');
 
+:root{
+    --color-primary: #442e7a;
+    --color-secondary-pink: #ee3364;
+    --color-secondary-blue: #00b5bc;
+}
+
 html, body{
     height: 100%;
 }
 
 html{
-	font-size: 100%; // 1rem = 16px
+	font-size: 112.5%; // 1rem = 16px
 }
 
 body {
     font-family: $font-Montserrat;
 	font-size: $default-font-size;
 	font-weight: 400;
-    color: $color-gray-dark;
+    color: $color-gray-dark-5;
     background: $color-white;
 	line-height: $default-line-height;
 	text-rendering: optimizeLegibility;
@@ -28,7 +34,7 @@ a {
     transition-duration: .3s;
     transition-property: all;
     text-decoration: none;
-    color: inherit
+    color: inherit;
 }
 
 a:active,
@@ -39,7 +45,7 @@ a:hover {
 }
 
 a:hover {
-    color: #ee3364
+    color: var(--color-secondary-pink);
 }
 
 .h1, .h2, .h3, .h4, .h5, .h6,

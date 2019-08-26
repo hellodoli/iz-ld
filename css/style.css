@@ -46,17 +46,22 @@
     opacity: 1;
     transform: translateY(0); } }
 
+:root {
+  --color-primary: #442e7a;
+  --color-secondary-pink: #ee3364;
+  --color-secondary-blue: #00b5bc; }
+
 html, body {
   height: 100%; }
 
 html {
-  font-size: 100%; }
+  font-size: 112.5%; }
 
 body {
   font-family: "Montserrat", sans-serif;
   font-size: 1rem;
   font-weight: 400;
-  color: #777;
+  color: #758294;
   background: #fff;
   line-height: 1.5;
   text-rendering: optimizeLegibility;
@@ -78,7 +83,7 @@ a:hover {
   outline: 0; }
 
 a:hover {
-  color: #ee3364; }
+  color: var(--color-secondary-pink); }
 
 .h1, .h2, .h3, .h4, .h5, .h6,
 h1, h2, h3, h4, h5, h6 {
@@ -138,6 +143,23 @@ ul.sf-menu {
 
 button[type="submit"], input[type="submit"] {
   cursor: pointer; }
+
+::selection {
+  background: #662bff; }
+
+::selection {
+  color: #fff; }
+
+::selection {
+  opacity: 1; }
+
+.iz-sub-title {
+  line-height: 1.5em;
+  color: #758294;
+  font-weight: 400; }
+  .iz-sub-title--small {
+    font-size: 14px;
+    line-height: 1.71em; }
 
 .u-center-text {
   text-align: center !important; }
@@ -207,7 +229,7 @@ button[type="submit"], input[type="submit"] {
   object-position: center; }
 
 .c-primary {
-  color: #feb518; }
+  color: #442e7a; }
 
 .c-white {
   color: #fff; }
@@ -310,6 +332,13 @@ button[type="submit"], input[type="submit"] {
 
 .pr-xsmall {
   padding-right: 0.625rem; }
+
+.iz-section:not(:last-child) {
+  margin-bottom: 24px; }
+
+.iz-section__title {
+  font-size: 28px;
+  line-height: 42px; }
 
 .iz-showcase {
   position: relative;

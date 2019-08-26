@@ -1,0 +1,11 @@
+.iz-section{
+
+    &:not(:last-child) {
+        margin-bottom: 24px;
+    }
+
+    &__title{
+        font-size: 28px;
+        line-height: 42px;
+    }
+}
