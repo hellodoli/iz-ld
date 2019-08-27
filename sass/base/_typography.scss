@@ -1,21 +1,40 @@
-::selection {
-    background: #662bff;
-}
-
-::selection {
-    color: #fff;
-}
-
-::selection {
-    opacity: 1;
-}
-
-.iz-sub-title{
+.iz-sub-title {
     line-height: 1.5em;
-    color: #758294;
-    font-weight: 400;
-    &--small{
+    color: var(--color-gray);
+    font-weight: var(--font-weight-normal);
+
+    &--small {
         font-size: 14px;
         line-height: 1.71em;
+    }
+}
+
+p.iz-drop-cap {
+    &:not(:focus)::first-letter {
+        font-size: 3.77em;
+        font-weight: var(--font-weight-bold);
+        line-height: .75;
+        margin: 0.1em .17em 0 0;
+    }
+}
+
+.iz-drop-cap {
+    &:not(:focus) {
+        &::first-letter {
+            float: left;
+            font-size: 8.4em;
+            font-weight: 100;
+            line-height: .68;
+            margin: .05em .1em 0 0;
+            text-transform: uppercase;
+            font-style: normal;
+        }
+
+        &:after {
+            content: "";
+            display: table;
+            clear: both;
+            padding-top: 14px;
+        }
     }
 }

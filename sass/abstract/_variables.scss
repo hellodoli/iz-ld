@@ -1,10 +1,12 @@
 // colors
-$color-primary: #442e7a;
+$color-primary: #662bff;
+$color-primary-dark: #442e7a;
 //$color-primary-light: #7ed56f;
-//$color-primary-dark: #28b485;
+
 
 $color-secondary-1: #ee3364;
 $color-secondary-2: #00b5bc;
+$color-link: #ef4c14;
 //$color-secondary-dark: #ff7730;
 
 //$color-tertiary-light: #2998ff;
@@ -14,16 +16,17 @@ $color-gray-light-1: #f7f7f7;
 $color-gray-light-2: #eee;
 $color-gray-light-3: #ddd;
 
-$color-gray-dark: #777;
+$color-gray-dark-1: #777;
 $color-gray-dark-2: #838383;
 $color-gray-dark-3: #333;
-$color-gray-dark-4: #666666;
+$color-gray-dark-4: #666;
 $color-gray-dark-5: #758294;
 
-$color-widget-title: #cccccc;
-$color-widget-text: #888888;
+$color-widget-title: #ccc;
+$color-widget-text: #888;
 
 $color-white: #fff;
+$color-black: #0b0b0b;
 
 // font
 $default-font-size: 1rem;
@@ -34,3 +37,4 @@ $font-robotoslabs: 'Roboto Slab', serif;
 $font-osward: 'Oswald', sans-serif;
 $font-dancingscript: 'Dancing Script', cursive;
 $font-Montserrat: 'Montserrat', sans-serif;
+$font-Lora: 'Lora', serif;

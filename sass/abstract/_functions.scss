@@ -1,3 +1,7 @@
-@function rem($font-size, $font-size-default: 16px){
+@function rem($font-size, $font-size-default: 18px) {
     @return $font-size/$font-size-default#{rem};
+}
+
+@function color($colorName) {
+    @return var(--color-#{$colorName});
 }

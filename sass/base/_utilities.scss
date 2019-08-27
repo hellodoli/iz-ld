@@ -1,115 +1,110 @@
-.u-center-text { text-align: center!important; }
+.u-margin-bottom-big {
+    margin-bottom: 8rem !important;
 
-.u-margin-bottom-big { 
-    margin-bottom: 8rem!important; 
-    @include respond(tab-port) {
-        margin-bottom: 5rem!important; 
+    @include respond-above(tablet) {
+        margin-bottom: 5rem !important;
     }
 }
+
 .u-margin-bottom-medium {
-    margin-bottom: 4rem!important; 
-    @include respond(tab-port) {
-        margin-bottom: 3rem!important; 
+    margin-bottom: 4rem !important;
+
+    @include respond-above(tablet) {
+        margin-bottom: 3rem !important;
     }
 }
-.u-margin-bottom-small { margin-bottom: 1.5rem!important; }
 
-.u-margin-top-big { margin-top: 8rem!important; }
-.u-margin-top-huge { margin-top: 10rem!important; }
+.u-margin-bottom-small {
+    margin-bottom: 1.5rem !important;
+}
+
+.u-margin-top-big {
+    margin-top: 8rem !important;
+}
+
+.u-margin-top-huge {
+    margin-top: 10rem !important;
+}
 
 // Hidden class
-.d-md-down-none{
-    @include breakpoint(laptop){
-        display: none!important;    
-    }
-}
-.d-lg-up-none{
-    @include breakpoint_up(laptop){
-        display: none!important;
+.d-md-down-none {
+    @include respond-below(laptop) {
+        display: none !important;
     }
 }
 
-// Col
-.col-sm-down-mt:not(:first-child){
-    @include breakpoint(tablet){
-        margin-top: rem(30px);
-    }
-}
-.col-md-down-mt:not(:first-child){
-    @include breakpoint(laptop){
-        margin-top: rem(30px);
+.d-lg-up-none {
+    @include respond-above(tablet) {
+        display: none !important;
     }
 }
 
-// Container
-.ar-section{
-    padding: rem(80px) 0;
-    &.ar-parallax-image{
+// UL, OL
+.iz-uo-menu {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    ul, ol {
+        margin: 0;
         padding: 0;
-    }
-}
-.ar-full-width-wrapper{
-    position: relative;
-    width: 100%;
-    height: auto;
-    margin-top: 0px;
-    margin-bottom: 0px;
-}
-@include breakpoint(max-phone){
-    .ar-section{
-        padding: rem(40px) 0;
+        list-style: none;
     }
 }
 
-// Image
-.ar-item-image-holder{
-    position: relative;
-    @include flex-vertical-center;
-}
-.ar-item-image{
-    display: block;
-    margin: 0 auto;
-    object-fit: cover;
-    object-position: center;
+//--- COLOR, BACKGROUND-COLOR
+$list-color: (primary: var(--color-primary),
+    pink: var(--color-secondary-pink),
+    blue: var(--color-secondary-blue),
+    orange: var(--color-link),
+    black: var(--color-black),
+    white: var(--color-white));
+
+@each $color-name,
+$color-value in $list-color {
+    .iz-text-#{$color-name} {
+        color: $color-value;
+    }
+
+    .iz-bg-#{$color-name} {
+        background: $color-value;
+    }
 }
 
-// Color
-.c-primary{
-    color: $color-primary;
-}
-.c-white{
-    color: $color-white;
-}
-.c-black{
-    color: $color-gray-dark-3;
-}
 
-// Margin, padding
+//--- MARGIN, PADDING
 $list-ulti: (big: rem(60px), medium: rem(30px), small: rem(22px), xsmall: rem(10px));
-@each $k, $v in $list-ulti{
-    .mb-#{$k}{
+
+@each $k,
+$v in $list-ulti {
+    .mb-#{$k} {
         margin-bottom: $v;
     }
-    .ml-#{$k}{
+
+    .ml-#{$k} {
         margin-left: $v;
     }
-    .mt-#{$k}{
+
+    .mt-#{$k} {
         margin-top: $v;
     }
-    .mr-#{$k}{
+
+    .mr-#{$k} {
         margin-right: $v;
     }
 
-    .pb-#{$k}{
+    .pb-#{$k} {
         padding-bottom: $v;
     }
-    .pl-#{$k}{
+
+    .pl-#{$k} {
         padding-left: $v;
     }
-    .pt-#{$k}{
+
+    .pt-#{$k} {
         padding-top: $v;
     }
-    .pr-#{$k}{
+
+    .pr-#{$k} {
         padding-right: $v;
     }
 }

@@ -1,0 +1,126 @@
+$flex: (100% 50% 33.333333% 25%);
+
+.iz-list-block {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -15px;
+
+    $parent: &;
+
+    &__item {
+        margin-top: rem(30px); // default is mg-medium
+        padding: 0 15px;
+        width: 100%;
+    }
+
+    &--mg-small {
+        &>#{$parent}__item {
+            margin-top: rem(20px);
+        }
+    }
+
+    &--column-1 {
+        &>#{$parent}__item {
+            &:nth-child(-n + 1) {
+                margin-top: 0;
+            }
+
+            flex: 0 0 nth($flex, 1);
+            max-width: 100%;
+        }
+    }
+}
+
+@include respond-below(tablet) {
+    .iz-list-block {
+        $parent: &;
+        &__item {
+            margin-top: rem(15px);
+        }
+        &--mg-small {
+            &>#{$parent}__item {
+                margin-top: rem(15px);
+            }
+        }
+    }
+
+    @for $i from 2 through 4 {
+        .iz-list-block {
+            $parent: &;
+            &--column-#{$i} {
+                &>#{$parent}__item {
+                    &:nth-child(-n + 1) {
+                        margin-top: 0;
+                    }
+                    flex: 0 0 100%;
+                    max-width: 100%;
+                }
+            }
+        }
+    }
+}
+
+@include respond-between(tablet, laptop) {
+    @for $i from 2 through 4 {
+        .iz-list-block {
+            $parent: &;
+            &--column-#{$i} {
+                &>#{$parent}__item {
+                    &:nth-child(-n + 2) {
+                        margin-top: 0;
+                    }
+                    flex: 0 0 50%;
+                    max-width: 50%;
+                }
+            }
+        }
+    }
+}
+
+@include respond-between(laptop, desktop) {
+    .iz-list-block {
+        $parent: &;
+        &--column-2{
+            &>#{$parent}__item {
+                &:nth-child(-n + 2) {
+                    margin-top: 0;
+                }
+
+                flex: 0 0 nth($flex, 2);
+                max-width: nth($flex, 2);
+            }    
+        }
+    }
+
+    @for $i from 3 through 4 {
+        .iz-list-block {
+            $parent: &;
+            &--column-#{$i} {
+                &>#{$parent}__item {
+                    &:nth-child(-n + 3) {
+                        margin-top: 0;
+                    }
+                    flex: 0 0 nth($flex, 3);
+                    max-width: nth($flex, 3);
+                }
+            }
+        }
+    }
+}
+
+@include respond-above(desktop) {
+    @for $i from 2 through 4 {
+        .iz-list-block {
+            $parent: &;
+            &--column-#{$i} {
+                &>#{$parent}__item {
+                    &:nth-child(-n + #{$i}) {
+                        margin-top: 0;
+                    }
+                    flex: 0 0 nth($flex, $i);
+                    max-width: nth($flex, $i);
+                }
+            }
+        }
+    }
+}
