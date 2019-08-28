@@ -1,11 +1,11 @@
-.iz-section{
+.iz-section {
 
     &:not(:last-child) {
-        margin-bottom: 1.67rem;
+        margin-bottom: 1.875rem;
     }
 
-    &__title{
-        font-size: 28px;
-        line-height: 42px;
+    &__title {
+        font-size: 1.75rem;
+        line-height: 1.5;
     }
 }

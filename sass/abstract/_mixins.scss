@@ -56,16 +56,20 @@
     - desktop
     ORDER: base + typography > general layout + grid > page layout > components
 */
-$breakpoints: (phone: 576px,
-    tablet: 768px,
-    laptop: 992px,
-    desktop: 1200px);
-
 @mixin respond-above($breakpoint) {
 
     @if map-has-key($breakpoints, $breakpoint) {
 
         $breakpoint-value: map-get($breakpoints, $breakpoint);
+
+        @media(min-width: $breakpoint-value) {
+            @content;
+        }
+    }
+
+    @else if map-has-key($breakpoints-simple, $breakpoint) {
+
+        $breakpoint-value: map-get($breakpoints-simple, $breakpoint);
 
         @media(min-width: $breakpoint-value) {
             @content;
@@ -87,16 +91,36 @@ $breakpoints: (phone: 576px,
         }
     }
 
+    @else if map-has-key($breakpoints-simple, $breakpoint) {
+
+        $breakpoint-value: map-get($breakpoints-simple, $breakpoint);
+
+        @media(max-width: ($breakpoint-value - 1)) {
+            @content;
+        }
+    }
+
     @else {
         @warn 'Invalid breakpoint: #{$breakpoint}.';
     }
 }
 
 @mixin respond_between($lower, $upper) {
+
     @if map-has-key($breakpoints, $lower) and map-has-key($breakpoints, $upper) {
 
         $lower-value: map-get($breakpoints, $lower);
         $upper-value: map-get($breakpoints, $upper);
+
+        @media(min-width: $lower-value) and (max-width: ($upper-value - 1)) {
+            @content;
+        }
+    }
+
+    @else if map-has-key($breakpoints-simple, $lower) and map-has-key($breakpoints-simple, $upper) {
+
+        $lower-value: map-get($breakpoints-simple, $lower);
+        $upper-value: map-get($breakpoints-simple, $upper);
 
         @media(min-width: $lower-value) and (max-width: ($upper-value - 1)) {
             @content;

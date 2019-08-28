@@ -1,14 +1,17 @@
 @import "abstract/functions";
-@import "abstract/mixins";
 @import "abstract/variables";
+@import "abstract/mixins";
 
 @import "base/animation";
 @import "base/base";
 @import "base/typography";
 @import "base/utilities";
 
+@import "components/pages/footer";
+
 @import "components/layout/section";
 @import "components/layout/column";
 
 @import "components/showcase";
 @import "components/tooltip";
+@import "components/menu-list";

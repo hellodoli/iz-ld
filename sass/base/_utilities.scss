@@ -39,23 +39,11 @@
     }
 }
 
-// UL, OL
-.iz-uo-menu {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    ul, ol {
-        margin: 0;
-        padding: 0;
-        list-style: none;
-    }
-}
-
 //--- COLOR, BACKGROUND-COLOR
-$list-color: (primary: var(--color-primary),
-    pink: var(--color-secondary-pink),
-    blue: var(--color-secondary-blue),
-    orange: var(--color-link),
+$list-color: (
+    primary: var(--color-primary),
+    secondary: var(--color-secondary),
+    link: var(--color-link),
     black: var(--color-black),
     white: var(--color-white));
 
@@ -72,10 +60,25 @@ $color-value in $list-color {
 
 
 //--- MARGIN, PADDING
-$list-ulti: (big: rem(60px), medium: rem(30px), small: rem(22px), xsmall: rem(10px));
+$list-ulti: (0: 0, big: 3.75rem, medium: 1.875rem, small: 1.25rem, xsmall: .625rem);
 
 @each $k,
 $v in $list-ulti {
+    
+    .m-#{$k} {
+        margin: $v;
+    }
+
+    .mx-#{$k} {
+        margin-top: $v;
+        margin-bottom: $v;
+    }
+
+    .my-#{$k} {
+        margin-left: $v;
+        margin-right: $v;
+    }
+
     .mb-#{$k} {
         margin-bottom: $v;
     }
@@ -92,6 +95,20 @@ $v in $list-ulti {
         margin-right: $v;
     }
 
+    .p-#{$k} {
+        padding: $v;
+    }
+
+    .px-#{$k} {
+        padding-top: $v;
+        padding-bottom: $v;
+    }
+
+    .py-#{$k} {
+        padding-left: $v;
+        padding-right: $v;
+    }
+
     .pb-#{$k} {
         padding-bottom: $v;
     }
@@ -106,5 +123,70 @@ $v in $list-ulti {
 
     .pr-#{$k} {
         padding-right: $v;
+    }
+
+    @each $breakpoint,
+    $breakpoint-pixel in $breakpoints-simple {
+        @include respond-above($breakpoint) {
+            .m-#{$breakpoint}-#{$k} {
+                margin: $v;
+            }
+
+            .mx-#{$breakpoint}-#{$k} {
+                margin-top: $v;
+                margin-bottom: $v;
+            }
+        
+            .my-#{$breakpoint}-#{$k} {
+                margin-left: $v;
+                margin-right: $v;
+            }
+
+            .mb-#{$breakpoint}-#{$k} {
+                margin-bottom: $v;
+            }
+
+            .ml-#{$breakpoint}-#{$k} {
+                margin-left: $v;
+            }
+
+            .mt-#{$breakpoint}-#{$k} {
+                margin-top: $v;
+            }
+
+            .mr-#{$breakpoint}-#{$k} {
+                margin-right: $v;
+            }
+
+            .p-#{$breakpoint}-#{$k} {
+                padding: $v;
+            }
+
+            .px-#{$breakpoint}-#{$k} {
+                padding-top: $v;
+                padding-bottom: $v;
+            }
+        
+            .py-#{$breakpoint}-#{$k} {
+                padding-left: $v;
+                padding-right: $v;
+            }
+
+            .pb-#{$breakpoint}-#{$k} {
+                padding-bottom: $v;
+            }
+
+            .pl-#{$breakpoint}-#{$k} {
+                padding-left: $v;
+            }
+
+            .pt-#{$breakpoint}-#{$k} {
+                padding-top: $v;
+            }
+
+            .pr-#{$breakpoint}-#{$k} {
+                padding-right: $v;
+            }
+        }
     }
 }

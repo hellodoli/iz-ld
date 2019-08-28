@@ -1,13 +1,8 @@
 // colors
-$color-primary: #662bff;
-$color-primary-dark: #442e7a;
-//$color-primary-light: #7ed56f;
+$color-primary: #ee3364;
 
-
-$color-secondary-1: #ee3364;
-$color-secondary-2: #00b5bc;
+$color-secondary: #00b5bc;
 $color-link: #ef4c14;
-//$color-secondary-dark: #ff7730;
 
 //$color-tertiary-light: #2998ff;
 //$color-tertiary-dark: #5643fa;
@@ -29,12 +24,23 @@ $color-white: #fff;
 $color-black: #0b0b0b;
 
 // font
-$default-font-size: 1rem;
+$default-font-size: 1.125rem;
 $default-line-height: 1.5;
 
 // font family
-$font-robotoslabs: 'Roboto Slab', serif;
-$font-osward: 'Oswald', sans-serif;
-$font-dancingscript: 'Dancing Script', cursive;
-$font-Montserrat: 'Montserrat', sans-serif;
-$font-Lora: 'Lora', serif;
+$font-Montserrat: 'Montserrat',
+sans-serif;
+$font-Lora: 'Lora',
+serif;
+$font-Muli: 'Muli', sans-serif;
+
+// breakpoint
+$breakpoints: (phone: 576px,
+    tablet: 768px,
+    laptop: 992px,
+    desktop: 1200px);
+
+$breakpoints-simple: (sm: 576px,
+    md: 768px,
+    lg: 992px,
+    xl: 1200px);

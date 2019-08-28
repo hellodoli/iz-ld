@@ -4,19 +4,11 @@
     font-weight: var(--font-weight-normal);
 
     &--small {
-        font-size: 14px;
+        font-size: .875rem;
         line-height: 1.71em;
     }
 }
 
-p.iz-drop-cap {
-    &:not(:focus)::first-letter {
-        font-size: 3.77em;
-        font-weight: var(--font-weight-bold);
-        line-height: .75;
-        margin: 0.1em .17em 0 0;
-    }
-}
 
 .iz-drop-cap {
     &:not(:focus) {
@@ -28,6 +20,7 @@ p.iz-drop-cap {
             margin: .05em .1em 0 0;
             text-transform: uppercase;
             font-style: normal;
+            color: var(--color-primary);
         }
 
         &:after {
@@ -36,5 +29,14 @@ p.iz-drop-cap {
             clear: both;
             padding-top: 14px;
         }
+    }
+}
+
+p.iz-drop-cap {
+    &:not(:focus)::first-letter {
+        font-size: 3.77em;
+        font-weight: var(--font-weight-bold);
+        line-height: .75;
+        margin: 0.1em .17em 0 0;
     }
 }

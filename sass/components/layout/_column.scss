@@ -8,14 +8,14 @@ $flex: (100% 50% 33.333333% 25%);
     $parent: &;
 
     &__item {
-        margin-top: rem(30px); // default is mg-medium
+        margin-top: 1.875rem; // default is mg-medium
         padding: 0 15px;
         width: 100%;
     }
 
     &--mg-small {
         &>#{$parent}__item {
-            margin-top: rem(20px);
+            margin-top: 1.25rem;
         }
     }
 
@@ -35,11 +35,11 @@ $flex: (100% 50% 33.333333% 25%);
     .iz-list-block {
         $parent: &;
         &__item {
-            margin-top: rem(15px);
+            margin-top:  0.9375rem;
         }
         &--mg-small {
             &>#{$parent}__item {
-                margin-top: rem(15px);
+                margin-top:  0.9375rem;
             }
         }
     }

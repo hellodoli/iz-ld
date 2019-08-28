@@ -1,0 +1,35 @@
+.iz-footer {
+
+    &--fixed {
+        @include respond-above(tablet) {
+            position: fixed;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 0;
+        }
+    }
+
+    &--style-1 {
+        background-color: #191919;
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-attachment: scroll;
+        background-size: cover;
+        padding: 140px 0;
+    }
+}
+
+.has-footer--style-1 {
+    .iz-site-wrapper__inner {
+        @include respond-above(tablet) {
+            position: relative;
+            z-index: 10;
+            background: var(--color-white);
+        }
+
+        @include respond-below(tablet) {
+            margin-bottom: 0!important;
+        }
+    }
+}
