@@ -5,10 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>iz-fullpage-slider</title>
-
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap" rel="stylesheet">
-
+    <title>IZ-fullpage-slider</title>
     <link rel="stylesheet" href="libs/css/bootstrap.min.css">
     <link rel="stylesheet" href="libs/css/vlt-button.css">
     <link rel="stylesheet" href="css/style.css">
@@ -116,7 +113,38 @@
     </main>
 
     <script src="libs/js/jquery-3.3.1.min.js"></script>
-    <script src="js/index.js"></script>
+    <script src="js/fullpageSlider.js"></script>
+    <script>
+        var windowHeight = window.innerHeight;
+        var scrollStatus = {
+            wheeling: false,
+            functionCall: false
+        }
+        var scrollTimer = false;
+
+        var showCase = document.querySelector('.iz-showcase');
+        var showcaseSlideItem = document.querySelectorAll('.iz-showcase__wrapper .iz-showcase__slide');
+
+        for (let i = 0; i < showcaseSlideItem.length; i++) {
+            showcaseSlideItem[i].style.height = windowHeight + 'px';
+        }
+
+        showCase.onwheel = function (e) {
+            scrollStatus.wheeling = true;
+
+            if (!scrollStatus.functionCall) {
+                scrollShowcase(e, showcaseSlideItem, showcaseSlideItem.length);
+                scrollStatus.functionCall = true;
+            }
+
+            window.clearInterval(scrollTimer);
+
+            scrollTimer = window.setTimeout(function () {
+                scrollStatus.functionCall = false;
+                scrollStatus.wheeling = false;
+            }, 200);
+        };
+    </script>
 </body>
 
 </html>

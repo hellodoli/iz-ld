@@ -11,12 +11,99 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 
-<body class="iz-body has-footer--style-1">
+<body class="iz-body iz-pages has-footer--style-1">
 
     <div class="iz-site-wrapper">
 
         <div class="iz-site-wrapper__inner pb-medium">
-            <main class="iz-page iz-page__typrography">
+            <div class="d-none d-lg-block">
+                <header class="iz-header iz-header--default">
+                    <div class="iz-navbar iz-navbar--default iz-navbar--fixed">
+                        <div class="container">
+                            <div class="iz-navbar__wrapper">
+                                <div class="iz-navbar__item">
+                                    <a href="#" class="iz-navbar__brand">
+                                        <img class="img-fluid" src="" alt="iz-header__logo" />
+                                    </a>
+                                </div>
+                                <div class="iz-navbar__item">
+
+                                    <nav class="iz-navigation">
+                                        <ul class="iz-navigation__menu">
+
+                                            <li class="has-megamenu has-megamenu--col-4">
+                                                <a href="#"><span>home</span></a>
+                                                <ul class="sub-menu">
+                                                    <li>
+                                                        <a href="#"><span>Homepage List</span></a>
+                                                        <ul>
+                                                            <li class="current-page"><a href="#">Homepage 01</a></li>
+                                                            <li><a href="#">Homepage 02</a></li>
+                                                            <li><a href="#">Homepage 03</a></li>
+                                                            <li><a href="#">Homepage 04</a></li>
+                                                            <li><a href="#">Homepage 05</a></li>
+                                                        </ul>
+                                                    </li>
+
+                                                    <li>
+                                                        <a href="#"><span>Homepage List</span></a>
+                                                        <ul>
+                                                            <li><a href="#">Homepage 06</a></li>
+                                                            <li><a href="#">Homepage 07</a></li>
+                                                            <li><a href="#">Homepage 08</a></li>
+                                                            <li><a href="#">Homepage 09</a></li>
+                                                            <li><a href="#">Homepage 10</a></li>
+                                                        </ul>
+                                                    </li>
+                                                </ul>
+                                            </li>
+
+                                            <li>
+                                                <a href="#"><span>about</span></a>
+                                                <ul class="sub-menu">
+                                                    <li class="menu-item-has-child">
+                                                        <a href="#"><span>About Us</span></a>
+                                                        <ul class="sub-menu">
+                                                            <li><a href="#"><span>About Us 1</span></a></li>
+                                                            <li><a href="#"><span>About Us 2</span></a></li>
+                                                            <li><a href="#"><span>About Us 3</span></a></li>
+                                                        </ul>
+                                                    </li>
+                                                    <li><a href="#">About Me</a></li>
+                                                </ul>
+                                            </li>
+
+                                            <li>
+                                                <a href="#"><span>portfolio</span></a>
+                                            </li>
+
+                                            <li>
+                                                <a href="#"><span>blog</span></a>
+                                            </li>
+
+                                            <li>
+                                                <a href="#"><span>pages</span></a>
+                                            </li>
+
+                                            <li>
+                                                <a href="#"><span>shop</span></a>
+                                            </li>
+
+                                        </ul>
+                                    </nav>
+                                    <!-- ./end .iz-navigation -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="js-iz-navbar-fake iz-navbar-fake" style="height: 100px;"></div>
+                </header>
+            </div>
+            <div class="d-lg-none">
+                Block Mobile Header
+            </div>
+
+            <main class="iz-page iz-page--typrography">
                 <div class="container">
                     <div class="iz-section-wrapp">
 
@@ -195,7 +282,7 @@
                     </div>
                 </div>
             </main>
-            <!-- ./end .iz-page -->
+            <!-- ./end .iz-page-main -->
         </div>
         <!-- ./end .iz-site-wrapper__inner -->
 
@@ -217,22 +304,13 @@
         <!-- ./end .iz-footer -->
     </div>
 
-
     <script src="libs/js/jquery-3.3.1.min.js"></script>
-
+    <script src="js/index.js"></script>
     <script>
         $(document).ready(function () {
-            var $footer = $('.js-iz-footer');
-
-            if ($footer.length === 1) {
-                if ($footer.hasClass('js-iz-footer--fixed') || $footer.hasClass('iz-footer--fixed')) {
-                    var $wrappBeforeFooter = $footer.prev();
-                    $wrappBeforeFooter.css('margin-bottom', $footer.outerHeight());
-                }
-            }
+            initHeaderAndFooter();
         });
     </script>
-
 </body>
 
 </html>
