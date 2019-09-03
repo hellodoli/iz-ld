@@ -1635,6 +1635,8 @@ p.iz-drop-cap:not(:focus)::first-letter {
     display: block; }
     .iz-navigation-mobile__menu li.current-page > a {
       color: var(--color-primary); }
+    .iz-navigation-mobile__menu li.menu-item-has-child > a.opened::after {
+      transform: rotate(90deg); }
     .iz-navigation-mobile__menu li.menu-item-has-child > a::after {
       content: "\f054";
       font-family: 'Font Awesome 5 Free';
@@ -1648,7 +1650,9 @@ p.iz-drop-cap:not(:focus)::first-letter {
       text-rendering: auto;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
-      line-height: 1; }
+      line-height: 1;
+      transform: rotate(0);
+      transition: transform .3s ease-in-out; }
   .iz-navigation-mobile__menu ul.sub-menu {
     font-size: .875rem;
     font-style: italic;
@@ -1657,12 +1661,13 @@ p.iz-drop-cap:not(:focus)::first-letter {
   .iz-navigation-mobile__menu a {
     font-size: 1rem;
     line-height: 1;
-    position: relative;
-    display: flex;
-    padding: .875rem 0;
     text-align: left;
+    text-transform: capitalize;
+    position: relative;
+    padding: .875rem 0;
     color: var(--color-black);
     border-bottom: 1px dashed #eee;
+    display: flex;
     align-items: center;
     justify-content: space-between; }
 

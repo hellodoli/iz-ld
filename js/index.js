@@ -40,6 +40,7 @@ function effectSubMenuHover($sfHover, duration, displayStyle = 'block') {
 }
 
 function subMenuHover() {
+
     var $sfHover_01 = $('.iz-navigation__menu > li.has-megamenu'); // grid
 
     var $sfHover_02 = $('.iz-navigation__menu > li:not(.has-megamenu)');
@@ -53,10 +54,14 @@ function subMenuHover() {
 }
 
 function collapseNavMobile() {
-    var $btnToggleNavMobile = $('.iz-navigation-mobile__menu li.menu-item-has-child > a');
+    var $btnToggleNavMobile = $('#izNavMobileMenu li.menu-item-has-child > a');
 
     $btnToggleNavMobile.on('click', function (e) {
         e.stopPropagation();
+
+        //$btnToggleNavMobile.removeClass('opened');
+        //if(!$(this).hasClass('opened')) $(this).addClass('opened');
+            
         $(this).next('.sub-menu').collapse('toggle');
     });
 }
@@ -71,11 +76,11 @@ function checkFooterFixed($footer) {
     }
 }
 
+//-- MAIN
 function initHeaderAndFooter() {
     //--- init Header
-    var $navSubMenu = $('.iz-navigation__menu .sub-menu');
-    var $navMobileSubMenu = $('.iz-navigation-mobile__menu .sub-menu');
-
+    // Desktop
+    var $navSubMenu = $('#izNavDefaultMenu .sub-menu');
     if ($navSubMenu && $navSubMenu.length > 0) {
         $navSubMenu.css({
             'display': 'none',
@@ -84,16 +89,36 @@ function initHeaderAndFooter() {
         });
     }
 
-    if ($navMobileSubMenu && $navMobileSubMenu.length > 0) {
-        $('.iz-navigation-mobile').addClass('collapse');
+    // Mobile
+    const NAV_MOBILE_NO_HASH = 'izNavMobile';
+    const NAV_MOBILE = '#' + NAV_MOBILE_NO_HASH;
+    var $navMobile = $(NAV_MOBILE);
+    if ($navMobile.length > 0) {
+        $navMobile.addClass('collapse'); // <nav /> parent collapse
+        $navMobile.find('.sub-menu').addClass('collapse'); // all .sub-menu collapse
 
-        $navMobileSubMenu.addClass('collapse');
-        $navMobileSubMenu.attr('data-parent', '#' + $navMobileSubMenu.parent().attr('id'));
+        var $liParent = $(NAV_MOBILE + ' ' + 'li.menu-item-has-child');
+        if($liParent.length > 0) {
+            $liParent.each(async (index,element) => {
+                // if has SUB MENU
+                if($(element).find('li.menu-item-has-child').length > 0) {
+
+                    var $subMenuChild = $(element).children('.sub-menu').find('.sub-menu');
+                    await $(element).attr('id', NAV_MOBILE_NO_HASH + '_' + index);
+
+                    var parentID = $(element).attr('id');
+                    
+                    $subMenuChild.each((index,element) => {
+                        $(element).attr('data-parent', '#' + parentID);
+                    });
+                }
+            });
+        }
     }
-        
-    //--- hover nav desk
+
+    //--- hover navigation desk
     subMenuHover();
-    //--- collapse nav mobile
+    //--- collapse navition mobile
     collapseNavMobile();
 
     var $footer = $('.js-iz-footer');

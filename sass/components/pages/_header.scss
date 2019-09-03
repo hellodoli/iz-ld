@@ -337,6 +337,11 @@ $bg-submenu: #262626;
             }
             &.menu-item-has-child {
                 &>a {
+                    &.opened{
+                        &::after{
+                            transform: rotate(90deg);
+                        }
+                    }
                     &::after {
                         content: "\f054";
                         font-family: 'Font Awesome 5 Free';
@@ -351,6 +356,8 @@ $bg-submenu: #262626;
                         -webkit-font-smoothing: antialiased;
                         -moz-osx-font-smoothing: grayscale;
                         line-height: 1;
+                        transform: rotate(0);
+                        transition: transform .3s ease-in-out;
                     }
                 }
             }
@@ -366,12 +373,13 @@ $bg-submenu: #262626;
         a {
             font-size: 1rem;
             line-height: 1;
-            position: relative;
-            display: flex;
-            padding: .875rem 0;
             text-align: left;
+            text-transform: capitalize;
+            position: relative;
+            padding: .875rem 0;
             color: var(--color-black);
             border-bottom: 1px dashed #eee;
+            display: flex;
             align-items: center;
             justify-content: space-between;
         }

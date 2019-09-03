@@ -29,8 +29,8 @@
                                 </div>
                                 <div class="iz-navbar__item">
 
-                                    <nav class="iz-navigation">
-                                        <ul class="iz-navigation__menu">
+                                    <nav id="izNavDefault" class="iz-navigation">
+                                        <ul id="izNavDefaultMenu" class="iz-navigation__menu">
 
                                             <li class="has-megamenu has-megamenu--col-4">
                                                 <a href="#"><span>home</span></a>
@@ -108,7 +108,8 @@
                         <div class="container">
                             <div class="iz-navbar__wrapper">
                                 <div class="iz-navbar__item text-left">
-                                    <div class="iz-menu-burger" data-toggle="collapse" data-target=".iz-navigation-mobile">
+                                    <div class="iz-menu-burger" data-toggle="collapse"
+                                        data-target="#izNavMobile">
                                         <div class="iz-menu-burger__line iz-menu-burger__line--1">
                                             <span></span>
                                         </div>
@@ -134,19 +135,35 @@
                                 </div>
                             </div>
 
-                            <nav class="iz-navigation-mobile">
+                            <nav id="izNavMobile" class="iz-navigation-mobile">
                                 <div class="container">
-                                    <ul class="iz-navigation-mobile__menu iz-uo-menu">
+                                    <ul id="izNavMobileMenu" class="iz-navigation-mobile__menu iz-uo-menu">
 
-                                        <li id="izNavMobileMenuItem-01" class="menu-item-has-child">
+                                        <li class="menu-item-has-child">
                                             <a href="#"><span>home</span></a>
                                             <ul class="sub-menu">
-                                                <li class="menu-item-has-child" >
+                                                <li class="menu-item-has-child">
                                                     <a href="#"><span>Homepage List</span></a>
-                                                    <ul class="sub-menu" data-parent="#izNavMobileMenuItem-01">
-                                                        <li class="current-page"><a href="#"><span>Homepage
-                                                                    01</span></a></li>
-                                                        <li><a href="#"><span>Homepage 02</span></a></li>
+                                                    <ul class="sub-menu">
+                                                        <li class="menu-item-has-child">
+                                                            <a href="#"><span>Homepage01</span></a>
+                                                            <ul class="sub-menu">
+                                                                <li><a href="#"><span>Homepage 01-1</span></a></li>
+                                                                <li><a href="#"><span>Homepage 01-2</span></a></li>
+                                                                <li><a href="#"><span>Homepage 01-3</span></a></li>
+                                                                <li><a href="#"><span>Homepage 01-4</span></a></li>
+                                                            </ul>
+                                                        </li>
+
+                                                        <li class="menu-item-has-child">
+                                                            <a href="#"><span>Homepage 02</span></a>
+                                                            <ul class="sub-menu">
+                                                                <li><a href="#"><span>Homepage 01-1</span></a></li>
+                                                                <li><a href="#"><span>Homepage 01-2</span></a></li>
+                                                                <li><a href="#"><span>Homepage 01-3</span></a></li>
+                                                                <li><a href="#"><span>Homepage 01-4</span></a></li>
+                                                            </ul>
+                                                        </li>
                                                         <li><a href="#"><span>Homepage 03</span></a></li>
                                                         <li><a href="#"><span>Homepage 04</span></a></li>
                                                         <li><a href="#"><span>Homepage 05</span></a></li>
@@ -155,7 +172,7 @@
 
                                                 <li class="menu-item-has-child">
                                                     <a href="#"><span>Homepage List</span></a>
-                                                    <ul class="sub-menu" data-parent="#izNavMobileMenuItem-01">
+                                                    <ul class="sub-menu">
                                                         <li><a href="#"><span>Homepage 06</span></a></li>
                                                         <li><a href="#"><span>Homepage 07</span></a></li>
                                                         <li><a href="#"><span>Homepage 08</span></a></li>
