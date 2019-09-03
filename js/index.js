@@ -90,7 +90,7 @@ function initHeaderAndFooter() {
         $navMobileSubMenu.addClass('collapse');
         $navMobileSubMenu.attr('data-parent', '#' + $navMobileSubMenu.parent().attr('id'));
     }
-        
+
     //--- hover nav desk
     subMenuHover();
     //--- collapse nav mobile
