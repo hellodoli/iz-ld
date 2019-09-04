@@ -10,81 +10,42 @@ const NAV_MOBILE = '#' + NAV_MOBILE_NO_HASH;
 
 function effectSubMenuHover($sfHover, duration, displayStyle = 'block') {
 
-    $sfHover.on('mouseenter',function(){
+    $sfHover.on('mouseenter', function () {
         var $this = $(this);
         var $subMenu = $this.children('.sub-menu');
 
-        $subMenu.css({
-            'display': displayStyle,
-            'transition': null
-        });
+        if ($subMenu && $subMenu.length > 0) {
 
-        setTimeout(function () {
-            $this.addClass('sfHover');
             $subMenu.css({
-                'margin-top': 0,
-                'opacity': 1,
-                'transition': 'all ' + duration + 'ms' + ' ease-in-out'
-            });
-        }, duration);
-    });
-
-    $sfHover.on('mouseleave', function(){
-        var thiss = $(this);
-        var $subMenu = thiss.children('.sub-menu');
-
-        thiss.removeClass('sfHover');
-
-        $subMenu.css({
-            'margin-top': '10px',
-            'opacity': 0,
-            'transition': 'all ' + duration + 'ms' + 'ease-in-out'
-        });
-
-        setTimeout(function () {
-            $subMenu.css({
-                'display': 'none',
-                'transition': null
-            });
-        }, duration);
-    });
-
-    /*$sfHover.hover(function () {
-        var thiss = $(this);
-        var $subMenu = thiss.children('.sub-menu');
-
-        $subMenu.css({
-            'display': displayStyle,
-            'transition': ''
-        });
-
-        setTimeout(function () {
-            thiss.addClass('sfHover');
-            $subMenu.css({
-                'margin-top': 0,
-                'opacity': 1,
-                'transition': 'all ' + duration + 'ms' + ' ease-in-out'
-            });
-        }, duration);
-    }, function () {
-        var thiss = $(this);
-        var $subMenu = thiss.children('.sub-menu');
-
-        thiss.removeClass('sfHover');
-
-        $subMenu.css({
-            'margin-top': '10px',
-            'opacity': 0,
-            'transition': 'all ' + duration + 'ms' + 'ease-in-out'
-        });
-
-        setTimeout(function () {
-            $subMenu.css({
-                'display': 'none',
+                'display': displayStyle,
                 'transition': ''
             });
-        }, duration);
-    });*/
+
+            $this.addClass('sfHover');
+
+            $subMenu.animate({
+                'margin-top': 0,
+                'opacity': 1,
+            }, duration);
+        }
+    });
+
+    $sfHover.on('mouseleave', function () {
+        var $this = $(this);
+        var $subMenu = $this.children('.sub-menu');
+
+        if ($subMenu && $subMenu.length > 0) {
+            $subMenu.animate({
+                'margin-top': '10px',
+                'opacity': 0
+            }, duration, function () {
+                $this.removeClass('sfHover');
+                $subMenu.css({
+                    'display': 'none',
+                });
+            });
+        }
+    });
 }
 
 function subMenuHover() {
@@ -97,18 +58,34 @@ function subMenuHover() {
     if ($sfHover_01.length > 0) effectSubMenuHover($sfHover_01, 200, 'grid');
 
     if ($sfHover_02.length > 0) effectSubMenuHover($sfHover_02, 200);
+
     if ($sfHover_03.length > 0) effectSubMenuHover($sfHover_03, 200);
 }
 
 function collapseNavMobile() {
-    var $btnToggleNavMobile = $('#izNavMobileMenu li.menu-item-has-child > a');
+    var $toogleNavMobile = $('#izNavMobileMenu li.menu-item-has-child > a');
 
-    $btnToggleNavMobile.on('click', function (e) {
+    $toogleNavMobile.on('click', function (e) {
         e.stopPropagation();
 
-        //$btnToggleNavMobile.removeClass('opened');
-        //if(!$(this).hasClass('opened')) $(this).addClass('opened');
+        var $prevToggleNavMobile = $(this).next('.sub-menu').find('.opened');
+        if($prevToggleNavMobile.length > 0) {
+            $prevToggleNavMobile.next('.sub-menu').collapse('hide');
+            $prevToggleNavMobile.removeClass('opened');
+            $(this).next('.sub-menu').collapse('hide');
+            return;
+        }
+
+        // add class .opened for toggle current
+        if(!$(this).hasClass('opened')) {
+            $toogleNavMobile.removeClass('opened');//toggle thang ngang hang vs no thoi
             
+            $(this).addClass('opened');
+        }else{
+            $(this).removeClass('opened');
+        }
+        
+        //toggle .sub-menu
         $(this).next('.sub-menu').collapse('toggle');
     });
 }
@@ -125,35 +102,39 @@ function checkFooterFixed($footer) {
 
 //-- MAIN
 function initHeaderAndFooter() {
-    //--- init Header
-    // make .sub-menu display: 'none'
+    // 1/ HEADER
+    // 1.1 - Navigation default
+    //--- make all .sub-menu display: 'none'
     var $navSubMenu = $(NAV_DEFAULT + ' ' + '.sub-menu');
     if ($navSubMenu && $navSubMenu.length > 0) {
         $navSubMenu.css({
             'display': 'none',
             'margin-top': '10px',
-            'opacity': 0
         });
     }
 
-    // Mobile
+    //--- hover navigation desk
+    subMenuHover();
+
+    // 1.2 Navigation Mobile
+    //--- add class .collapse
     var $navMobile = $(NAV_MOBILE);
     if ($navMobile.length > 0) {
         $navMobile.addClass('collapse'); // <nav /> parent collapse
         $navMobile.find('.sub-menu').addClass('collapse'); // all .sub-menu collapse
 
         var $liParent = $(NAV_MOBILE + ' ' + 'li.menu-item-has-child');
-        if($liParent.length > 0) {
-            $liParent.each(async (index,element) => {
+        if ($liParent.length > 0) {
+            $liParent.each(async (index, element) => {
                 // if has SUB MENU
-                if($(element).find('li.menu-item-has-child').length > 0) {
+                if ($(element).find('li.menu-item-has-child').length > 0) {
 
                     var $subMenuChild = $(element).children('.sub-menu').find('.sub-menu');
                     await $(element).attr('id', NAV_MOBILE_NO_HASH + '_' + index);
 
                     var parentID = $(element).attr('id');
-                    
-                    $subMenuChild.each((index,element) => {
+
+                    $subMenuChild.each((index, element) => {
                         $(element).attr('data-parent', '#' + parentID);
                     });
                 }
@@ -161,11 +142,10 @@ function initHeaderAndFooter() {
         }
     }
 
-    //--- hover navigation desk
-    subMenuHover();
     //--- collapse navition mobile
     collapseNavMobile();
 
+    // 2/FOOTER
     var $footer = $('.js-iz-footer');
     checkFooterFixed($footer);
 }
