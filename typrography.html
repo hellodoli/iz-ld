@@ -5,9 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>IZ-LD</title>
+    <title>IZ-Typrography</title>
     <link rel="stylesheet" href="libs/css/bootstrap.min.css">
-    <link rel="stylesheet" href="libs/css/vlt-button.css">
     <link rel="stylesheet" href="libs/font/css/all.min.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
@@ -24,14 +23,18 @@
                             <div class="iz-navbar__wrapper">
 
                                 <div class="iz-navbar__item">
-                                    <a href="#" class="iz-logo">
-                                        <img class="img-fluid" src="" alt="iz-header__logo" />
+                                    <a href="#" class="iz-header__logo iz-logo">
+                                        <img class="black" src="./img/logo/logo-default-black.png"
+                                            alt="iz-header__logo" />
+                                        <img class="white" src="./img/logo/logo-default-white.png"
+                                            alt="iz-header__logo" />
                                     </a>
                                 </div>
+
                                 <div class="iz-navbar__item">
 
-                                    <nav id="izNavDefault" class="iz-navigation">
-                                        <ul id="izNavDefaultMenu" class="iz-navigation__menu">
+                                    <nav id="izNavDefault" class="iz-navigation-default">
+                                        <ul id="izNavDefaultMenu" class="iz-navigation-default__menu">
 
                                             <li class="has-megamenu has-megamenu--col-4">
                                                 <a href="#"><span>home</span></a>
@@ -61,7 +64,7 @@
                                                 </ul>
                                             </li>
 
-                                            <li>
+                                            <li class="menu-item-has-child">
                                                 <a href="#"><span>about</span></a>
                                                 <ul class="sub-menu">
                                                     <li class="menu-item-has-child">
@@ -76,25 +79,16 @@
                                                 </ul>
                                             </li>
 
-                                            <li>
-                                                <a href="#"><span>portfolio</span></a>
-                                            </li>
+                                            <li><a href="#"><span>portfolio</span></a></li>
 
-                                            <li>
-                                                <a href="#"><span>blog</span></a>
-                                            </li>
+                                            <li><a href="#"><span>blog</span></a></li>
 
-                                            <li>
-                                                <a href="#"><span>pages</span></a>
-                                            </li>
+                                            <li><a href="#"><span>pages</span></a></li>
 
-                                            <li>
-                                                <a href="#"><span>shop</span></a>
-                                            </li>
-
+                                            <li><a href="#"><span>shop</span></a></li>
                                         </ul>
                                     </nav>
-                                    <!-- ./end .iz-navigation -->
+                                    <!-- ./end .iz-navigation-default -->
                                 </div>
 
                             </div>
@@ -109,22 +103,16 @@
                         <div class="container">
                             <div class="iz-navbar__wrapper">
                                 <div class="iz-navbar__item text-left">
-                                    <div class="iz-menu-burger" data-toggle="collapse" data-target="#izNavMobile">
-                                        <div class="iz-menu-burger__line iz-menu-burger__line--1">
-                                            <span></span>
-                                        </div>
-                                        <div class="iz-menu-burger__line iz-menu-burger__line--2">
-                                            <span></span>
-                                        </div>
-                                        <div class="iz-menu-burger__line iz-menu-burger__line--3">
-                                            <span></span>
-                                        </div>
+                                    <div id="izMenuBurger" class="iz-menu-burger">
+                                        <div class="iz-menu-burger__line iz-menu-burger__line--1"><span></span></div>
+                                        <div class="iz-menu-burger__line iz-menu-burger__line--2"><span></span></div>
+                                        <div class="iz-menu-burger__line iz-menu-burger__line--3"><span></span></div>
                                     </div>
                                     <!-- ./end .iz-menu-burger -->
                                 </div>
                                 <div class="iz-navbar__item text-center">
-                                    <a href="#" class="iz-logo">
-                                        <img class="img-fluid" src="" alt="iz-header__logo" />
+                                    <a href="#" class="iz-header__logo iz-logo">
+                                        <img class="black" src="img/logo/logo-aside.png" alt="iz-header__logo" />
                                     </a>
                                 </div>
                                 <div class="iz-navbar__item text-right">
@@ -137,7 +125,7 @@
 
                             <nav id="izNavMobile" class="iz-navigation-mobile">
                                 <div class="container">
-                                    <ul id="izNavMobileMenu" class="iz-navigation-mobile__menu iz-uo-menu">
+                                    <ul id="izNavMobileMenu" class="iz-navigation-mobile__menu">
 
                                         <li class="menu-item-has-child">
                                             <a href="#"><span>home</span></a>
@@ -145,24 +133,9 @@
                                                 <li class="menu-item-has-child">
                                                     <a href="#"><span>Homepage List</span></a>
                                                     <ul class="sub-menu">
-                                                        <li class="menu-item-has-child">
-                                                            <a href="#"><span>Homepage01</span></a>
-                                                            <ul class="sub-menu">
-                                                                <li><a href="#"><span>Homepage 01-1</span></a></li>
-                                                                <li><a href="#"><span>Homepage 01-2</span></a></li>
-                                                                <li><a href="#"><span>Homepage 01-3</span></a></li>
-                                                                <li><a href="#"><span>Homepage 01-4</span></a></li>
-                                                            </ul>
-                                                        </li>
-                                                        <li class="menu-item-has-child">
-                                                            <a href="#"><span>Homepage 02</span></a>
-                                                            <ul class="sub-menu">
-                                                                <li><a href="#"><span>Homepage 02-1</span></a></li>
-                                                                <li><a href="#"><span>Homepage 02-2</span></a></li>
-                                                                <li><a href="#"><span>Homepage 02-3</span></a></li>
-                                                                <li><a href="#"><span>Homepage 02-4</span></a></li>
-                                                            </ul>
-                                                        </li>
+                                                        <li class="current-page"><a href="#"><span>Homepage
+                                                                    01</span></a></li>
+                                                        <li><a href="#"><span>Homepage 02</span></a></li>
                                                         <li><a href="#"><span>Homepage 03</span></a></li>
                                                         <li><a href="#"><span>Homepage 04</span></a></li>
                                                         <li><a href="#"><span>Homepage 05</span></a></li>
@@ -216,6 +189,114 @@
                                                     </ul>
                                                 </li>
                                                 <li><a href="#"><span>About me</span></a></li>
+                                            </ul>
+                                        </li>
+
+                                        <li class="menu-item-has-child">
+                                            <a href="#"><span>portfolio</span></a>
+                                            <ul class="sub-menu">
+                                                <li class="menu-item-has-child">
+                                                    <a href="#"><span>layouts</span></a>
+                                                    <ul class="sub-menu">
+                                                        <li><a href="#"><span>portfolio 01</span></a></li>
+                                                        <li><a href="#"><span>portfolio 02</span></a></li>
+                                                        <li><a href="#"><span>portfolio 03</span></a></li>
+                                                        <li><a href="#"><span>portfolio 04</span></a></li>
+                                                    </ul>
+                                                </li>
+                                                <li class="menu-item-has-child">
+                                                    <a href="#"><span>single work</span></a>
+                                                    <ul class="sub-menu">
+                                                        <li><a href="#"><span>style 01</span></a></li>
+                                                        <li><a href="#"><span>style 02</span></a></li>
+                                                        <li><a href="#"><span>style 03</span></a></li>
+                                                        <li><a href="#"><span>style 04</span></a></li>
+                                                        <li><a href="#"><span>style 05</span></a></li>
+                                                        <li><a href="#"><span>style 06</span></a></li>
+                                                        <li><a href="#"><span>style 07</span></a></li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </li>
+
+                                        <li class="menu-item-has-child">
+                                            <a href="#"><span>blog</span></a>
+                                            <ul class="sub-menu">
+                                                <li class="menu-item-has-child">
+                                                    <a href="#"><span>layouts</span></a>
+                                                    <ul class="sub-menu">
+                                                        <li><a href="#"><span>blog 01</span></a></li>
+                                                        <li><a href="#"><span>blog 02</span></a></li>
+                                                        <li><a href="#"><span>blog 03</span></a></li>
+                                                        <li><a href="#"><span>blog 04</span></a></li>
+                                                        <li><a href="#"><span>blog 05</span></a></li>
+                                                        <li><a href="#"><span>blog 06</span></a></li>
+                                                        <li><a href="#"><span>blog 07</span></a></li>
+                                                    </ul>
+                                                </li>
+                                                <li class="menu-item-has-child">
+                                                    <a href="#"><span>single post</span></a>
+                                                    <ul class="sub-menu">
+                                                        <li><a href="#"><span>style 01</span></a></li>
+                                                        <li><a href="#"><span>style 02</span></a></li>
+                                                        <li><a href="#"><span>style 03</span></a></li>
+                                                        <li><a href="#"><span>style 04</span></a></li>
+                                                        <li><a href="#"><span>style 05</span></a></li>
+                                                        <li><a href="#"><span>style 06</span></a></li>
+                                                        <li><a href="#"><span>style 07</span></a></li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </li>
+
+                                        <li class="menu-item-has-child">
+                                            <a href="#"><span>pages</span></a>
+                                            <ul class="sub-menu">
+                                                <li class="menu-item-has-child">
+                                                    <a href="#"><span>services</span></a>
+                                                    <ul class="sub-menu">
+                                                        <li><a href="#"><span>services 01</span></a></li>
+                                                        <li><a href="#"><span>services 02</span></a></li>
+                                                        <li><a href="#"><span>services 03</span></a></li>
+                                                    </ul>
+                                                </li>
+                                                <li class="menu-item-has-child">
+                                                    <a href="#"><span>contact us</span></a>
+                                                    <ul class="sub-menu">
+                                                        <li><a href="#"><span>contact us 01</span></a></li>
+                                                        <li><a href="#"><span>contact us 02</span></a></li>
+                                                        <li><a href="#"><span>contact us 03</span></a></li>
+                                                    </ul>
+                                                </li>
+                                                <li class="menu-item-has-child">
+                                                    <a href="#"><span>coming soon</span></a>
+                                                    <ul class="sub-menu">
+                                                        <li><a href="#"><span>coming soon 01</span></a></li>
+                                                        <li><a href="#"><span>coming soon 02</span></a></li>
+                                                        <li><a href="#"><span>coming soon 03</span></a></li>
+                                                    </ul>
+                                                </li>
+                                                <li><a href="#"><span>maintenance</span></a></li>
+                                                <li><a href="#"><span>page 404</span></a></li>
+                                                <li><a href="#"><span>FAQ</span></a></li>
+                                            </ul>
+                                        </li>
+
+                                        <li class="menu-item-has-child">
+                                            <a href="#"><span>shop</span></a>
+                                            <ul class="sub-menu">
+                                                <li class="menu-item-has-child">
+                                                    <a href="#"><span>layouts</span></a>
+                                                    <ul class="sub-menu">
+                                                        <li><a href="#"><span>shop 01</span></a></li>
+                                                        <li><a href="#"><span>shop 02</span></a></li>
+                                                        <li><a href="#"><span>shop 03</span></a></li>
+                                                        <li><a href="#"><span>shop 04</span></a></li>
+                                                    </ul>
+                                                </li>
+                                                <li><a href="#"><span>cart</span></a></li>
+                                                <li><a href="#"><span>checkout</span></a></li>
+                                                <li><a href="#"><span>my account</span></a></li>
                                             </ul>
                                         </li>
 
@@ -298,23 +379,28 @@
                             <h2 class="iz-section__title">Button</h2>
                             <div class="iz-section__content">
                                 <div class="btn-group">
-                                    <button class="vlt-btn"><span>Button</span></button>
-                                    <div class="ml-2"></div>
-                                    <button class="vlt-btn vlt-btn--primary vlt-btn--effect"><span>Button
-                                            Primary</span></button>
-                                    <div class="ml-2"></div>
-                                    <button class="vlt-btn vlt-btn--secondary vlt-btn--effect"><span>Button
-                                            Secondary</span></button>
-                                    <div class="ml-2"></div>
+                                    <div class="mr-xsmall mb-xsmall mb-md-zero">
+                                        <button class="vlt-btn"><span>Button</span></button>
+                                    </div>
+                                    <div class="mr-xsmall mb-xsmall mb-md-zero">
+                                        <button class="vlt-btn vlt-btn--primary vlt-btn--effect"><span>Button
+                                                Primary</span></button>
+                                    </div>
+                                    <div class="mr-xsmall mb-xsmall mb-md-zero">
+                                        <button class="vlt-btn vlt-btn--secondary vlt-btn--effect mb-xsmall"><span>Button
+                                                Secondary</span></button>
+                                    </div>
+                                    <div class="mr-xsmall mb-xsmall mb-md-zero">
+                                        <button
+                                            class="vlt-btn vlt-btn--third vlt-btn--effect"><span>Button</span></button>
+                                    </div>
+                                    <div class="mb-xsmall mb-md-zero">
+                                        <button
+                                            class="vlt-btn vlt-btn--fifth vlt-btn--effect"><span>Button</span></button>
+                                    </div>
                                     <!--
-                                    <button class="vlt-btn vlt-btn--third vlt-btn--effect"><span>Button</span></button>
-                                    <div class="ml-2"></div>
-                                    <button class="vlt-btn vlt-btn--fifth vlt-btn--effect"><span>Button</span></button>
-                                    <div class="ml-2"></div>
                                     <button class="vlt-btn vlt-btn--sixth vlt-btn--effect"><span>Button</span></button>
-                                    <div class="ml-2"></div>
                                     <button class="vlt-btn vlt-btn--seventh vlt-btn--effect"><span>Button</span></button>
-                                    <div class="ml-2"></div>
                                     <button class="vlt-btn vlt-btn--eighth vlt-btn--effect"><span>Button</span></button>
                                     -->
                                 </div>
@@ -374,7 +460,7 @@
                                 <div class="iz-list-block iz-list-block--column-4">
 
                                     <div class="iz-list-block__item">
-                                        <ol class="with-counters p-0 mb-0">
+                                        <ol class="with-counters p-zero mb-zero">
                                             <li>Large wicker basket</li>
                                             <li>Blue glass vase
                                                 <ol>
@@ -388,7 +474,7 @@
                                     </div>
 
                                     <div class="iz-list-block__item">
-                                        <ol class="p-0 mb-0">
+                                        <ol class="p-zero mb-zero">
                                             <li>Large wicker basket</li>
                                             <li>Blue glass vase</li>
                                             <li>Ornamental plant</li>
@@ -399,7 +485,7 @@
                                     </div>
 
                                     <div class="iz-list-block__item">
-                                        <ul class="with-icon p-0 mb-0">
+                                        <ul class="with-icon p-zero mb-zero">
                                             <li>
                                                 <i class="icon fab fa-android"></i>
                                                 <span>Large wicker basket</span>
@@ -420,7 +506,7 @@
                                     </div>
 
                                     <div class="iz-list-block__item">
-                                        <ul class="with-style with-style--circle p-0 mb-0">
+                                        <ul class="with-style with-style--circle p-zero mb-zero">
                                             <li>Large wicker basket</li>
                                             <li>Blue glass vase</li>
                                             <li>Ornamental plant</li>
@@ -443,8 +529,8 @@
         <footer class="js-iz-footer js-iz-footer--fixed iz-footer iz-footer--fixed iz-footer--style-1">
             <div class="container">
                 <div class="text-center">
-                    <a class="iz-footer__logo d-inline-block mb-medium" href="#">
-                        <img class="img-fluid" src="" alt="iz-footer__logo" />
+                    <a class="iz-footer__logo iz-logo mb-medium" href="#">
+                        <img class="white" src="./img/logo/logo-footer-white.png" alt="iz-footer__logo" />
                     </a>
                     <div class="iz-footer__copyright mb-medium">
                         <p>© 2019 Leedo WordPress Theme. All rights reserved.</p>
@@ -459,7 +545,6 @@
     </div>
 
     <script src="libs/js/jquery-3.3.1.min.js"></script>
-    <script src="libs/js/bootstrap.min.js"></script>
     <script src="js/index.js"></script>
     <script>
         $(document).ready(function () {

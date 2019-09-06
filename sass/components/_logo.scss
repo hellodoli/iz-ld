@@ -1,0 +1,49 @@
+.iz-navbar{
+    .iz-logo {
+        display: inline-block;
+        vertical-align: middle;
+        line-height: 1;
+
+        img {
+            display: block;
+            max-width: none;
+        }
+    }
+}
+
+
+.iz-header {
+    &--default {
+        .iz-logo {
+            img {
+                height: 18px;
+
+                &.white {
+                    display: none;
+                }
+            }
+        }
+    }
+
+    &--mobile{
+        .iz-logo{
+            img{
+                height: 26px;
+            }
+        }
+    }
+}
+
+.iz-footer {
+    &--style-1 {
+        .iz-logo {
+            img {
+                height: 62px;
+
+                &.black {
+                    display: none;
+                }
+            }
+        }
+    }
+}
