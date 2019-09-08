@@ -23,6 +23,7 @@ $border-color-nav-mobile: #eee;
     display: inline-block;
     padding-right: .5625rem;
     color: currentColor;
+    cursor: pointer;
 
     span {
         font-size: .5rem;
@@ -113,6 +114,14 @@ $border-color-nav-mobile: #eee;
         top: 0;
         width: 100%;
         transition: all .3s ease-in-out;
+
+        &.on-scroll-show {
+            animation: fadeInDown .3s linear forwards;
+        }
+
+        &.on-scroll-hide {
+            animation: fadeOutUp .3s linear forwards;
+        }
     }
 
     &__wrapper {
@@ -123,6 +132,29 @@ $border-color-nav-mobile: #eee;
 
     &__item {
         @include flex-vertical-center;
+    }
+}
+
+@keyframes fadeOutUp {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+        transform: translate3d(0, -100%, 0);
+    }
+}
+
+@keyframes fadeInDown {
+    0% {
+        opacity: 0;
+        transform: translate3d(0, -100%, 0);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
     }
 }
 
@@ -140,34 +172,33 @@ ul[class*='iz-navigation-'] {
 }
 
 $bg-submenu: #262626;
+
 .iz-navigation-default {
     &__menu {
         @include flex-vertical-center;
         justify-content: flex-start;
-        margin: 0;
-        padding: 0;
-        list-style: none;
 
         // GENERAL
-        ul {
-            margin: 0;
-            padding: 0;
-            list-style: none;
 
-            ul {
-                top: 0;
-                left: 100%;
-            }
+        ul ul {
+            top: 0;
+            left: 100%;
         }
 
-        a {
+        li {
             position: relative;
-            color: inherit;
 
-            &:hover {
-                color: var(--color-primary);
+            a {
+                position: relative;
+                color: inherit;
+
+                &:hover {
+                    color: var(--color-primary);
+                }
             }
         }
+
+
 
         // SUB MENU - GENERAL
         ul {
@@ -178,15 +209,19 @@ $bg-submenu: #262626;
             z-index: 99;
 
             &.sub-menu {
-                margin-top: .625rem;
+                margin-top: 10px;
                 opacity: 0;
 
                 font-family: var(--font-family-text);
                 font-size: 1rem;
-                padding: 1.25rem 0;
+                padding: 20px 0;
                 color: var(--color-white);
                 background-color: $bg-submenu;
-                min-width: 190px;
+                min-width: 180px;
+
+                ul.sub-menu {
+                    top: -20px;
+                }
 
                 li {
                     display: block;
@@ -196,11 +231,18 @@ $bg-submenu: #262626;
                             color: var(--color-primary);
                         }
                     }
+
+                    &.left {
+                        ul.sub-menu {
+                            left: auto;
+                            right: 100%;
+                        }
+                    }
                 }
 
                 a {
-                    line-height: 1.2;
                     padding: .5rem 1.875rem;
+                    line-height: 1.2;
                     white-space: nowrap;
                     @include flex-full-width-center;
                 }
@@ -273,8 +315,6 @@ $bg-submenu: #262626;
 
         // MENU LEVEL 1
         &>li {
-            position: relative;
-
             &:hover {
                 &>a {
                     color: var(--color-primary);
@@ -290,7 +330,7 @@ $bg-submenu: #262626;
             &>a {
                 display: block;
                 font-family: var(--font-family-title);
-                font-size: .875rem;
+                font-size: .75rem;
                 font-weight: var(--font-weight-semi-bold);
                 white-space: nowrap;
                 text-transform: uppercase;
