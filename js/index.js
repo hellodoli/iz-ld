@@ -100,7 +100,6 @@ function checkFooterFixed($footer) {
 }
 
 function scrollTopWindow($navbarFixed, offsetTop) {
-
     $(window).on('scroll', function () {
         if ($(this).scrollTop() > offsetTop) {
             if ($navbarFixed.hasClass('on-scroll-show')) {

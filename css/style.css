@@ -1704,6 +1704,18 @@ ul[class*='iz-navigation-'] {
   font-size: 1.75rem;
   line-height: 1.5; }
 
+.iz-cols {
+  margin-left: -15px;
+  margin-right: -15px;
+  margin-top: -15px; }
+
+.iz-col {
+  display: block;
+  flex-shrink: 1;
+  flex-grow: 1;
+  flex-basis: 0;
+  padding: 15px; }
+
 .iz-list-block {
   display: flex;
   flex-wrap: wrap;
