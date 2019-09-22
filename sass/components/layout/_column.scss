@@ -1,10 +1,38 @@
 $flex: (100% 50% 33.333333% 25%);
-$col-gap: 15px;
+$col-gap: 0.75rem !default;
 
 .iz-cols {
     margin-left: (-$col-gap);
     margin-right: (-$col-gap);
     margin-top: (-$col-gap);
+
+    @include respond-above(tablet) {
+        display: flex;
+        flex-wrap: wrap;
+
+        &.is-nowrap {
+            flex-wrap: nowrap;
+        }
+    }
+
+    &.is-gapless {
+        margin-left: 0;
+        margin-right: 0;
+        margin-top: 0;
+
+        &>.iz-col {
+            margin: 0;
+            padding: 0 !important;
+        }
+    }
+
+    &:last-child {
+        margin-bottom: (-$col-gap);
+    }
+
+    &:not(:last-child) {
+        margin-bottom: calc(1.5rem - #{-$col-gap});
+    }
 }
 
 .iz-col {
@@ -13,7 +41,95 @@ $col-gap: 15px;
     flex-grow: 1;
     flex-basis: 0;
     padding: $col-gap;
+
+    // fixed here
+    @for $i from 0 through 12 {
+        &.is-#{$i} {
+            flex: none;
+            width: percentage($i / 12);
+        }
+        &.is-offset-#{$i} {
+            margin-left: percentage($i / 12);
+        }
+    }
+
+    @include respond-above(tablet) {
+
+        @for $i from 0 through 12 {
+            &.is-#{$i} {
+                flex: none;
+                width: percentage($i / 12);
+            }
+            &.is-offset-#{$i} {
+                margin-left: percentage($i / 12);
+            }
+        }
+
+        &.is-full {
+            flex: none;
+            width: 100%;
+        }
+    
+        /* 80% */
+        &.is-four-fifths {
+            flex: none;
+            width: 80%;
+        }
+    
+        /* 75% */
+        &.is-three-quarters {
+            flex: none;
+            width: 75%;
+        }
+    
+        /* 66.666666% */
+        &.is-two-thirds {
+            flex: none;
+            width: 66.6666%;
+        }
+    
+        /* 60% */
+        &.is-three-fifths {
+            flex: none;
+            width: 60%;
+        }
+    
+        /* 50% */
+        &.is-half {
+            flex: none;
+            width: 50%;
+        }
+    
+        /* 40% */
+        &.is-two-fifths {
+            flex: none;
+            width: 40%;
+        }
+    
+        /* 33.3333% */
+        &.is-one-third {
+            flex: none;
+            width: 33.3333%;
+        }
+    
+        /* 25% */
+        &.is-one-quarter {
+            flex: none;
+            width: 25%;
+        }
+    
+        /* 20% */
+        &.is-one-fifth {
+            flex: none;
+            width: 20%;
+        }
+    }
 }
+
+
+
+
+
 
 
 
@@ -51,12 +167,14 @@ $col-gap: 15px;
 @include respond-below(tablet) {
     .iz-list-block {
         $parent: &;
+
         &__item {
-            margin-top:  0.9375rem;
+            margin-top: 0.9375rem;
         }
+
         &--mg-small {
             &>#{$parent}__item {
-                margin-top:  0.9375rem;
+                margin-top: 0.9375rem;
             }
         }
     }
@@ -64,11 +182,13 @@ $col-gap: 15px;
     @for $i from 2 through 4 {
         .iz-list-block {
             $parent: &;
+
             &--column-#{$i} {
                 &>#{$parent}__item {
                     &:nth-child(-n + 1) {
                         margin-top: 0;
                     }
+
                     flex: 0 0 100%;
                     max-width: 100%;
                 }
@@ -81,11 +201,13 @@ $col-gap: 15px;
     @for $i from 2 through 4 {
         .iz-list-block {
             $parent: &;
+
             &--column-#{$i} {
                 &>#{$parent}__item {
                     &:nth-child(-n + 2) {
                         margin-top: 0;
                     }
+
                     flex: 0 0 50%;
                     max-width: 50%;
                 }
@@ -97,7 +219,8 @@ $col-gap: 15px;
 @include respond-between(laptop, desktop) {
     .iz-list-block {
         $parent: &;
-        &--column-2{
+
+        &--column-2 {
             &>#{$parent}__item {
                 &:nth-child(-n + 2) {
                     margin-top: 0;
@@ -105,18 +228,20 @@ $col-gap: 15px;
 
                 flex: 0 0 nth($flex, 2);
                 max-width: nth($flex, 2);
-            }    
+            }
         }
     }
 
     @for $i from 3 through 4 {
         .iz-list-block {
             $parent: &;
+
             &--column-#{$i} {
                 &>#{$parent}__item {
                     &:nth-child(-n + 3) {
                         margin-top: 0;
                     }
+
                     flex: 0 0 nth($flex, 3);
                     max-width: nth($flex, 3);
                 }
@@ -129,11 +254,13 @@ $col-gap: 15px;
     @for $i from 2 through 4 {
         .iz-list-block {
             $parent: &;
+
             &--column-#{$i} {
                 &>#{$parent}__item {
                     &:nth-child(-n + #{$i}) {
                         margin-top: 0;
                     }
+
                     flex: 0 0 nth($flex, $i);
                     max-width: nth($flex, $i);
                 }
