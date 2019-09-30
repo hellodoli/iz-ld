@@ -1,9 +1,6 @@
 // colors
 $color-primary: #ee3364;
-
 $color-secondary: #00b5bc;
-$color-link: #ef4c14;
-
 //$color-tertiary-light: #2998ff;
 //$color-tertiary-dark: #5643fa;
 
@@ -18,11 +15,18 @@ $color-gray-dark-4: #666;
 $color-gray-dark-5: #758294;
 $color-gray-dark-6: #5c5c5c;
 
-$color-white: #fff;
 $color-black: #0b0b0b;
+$color-dark: #191919;
+$color-white: #fff;
+
+// list colors
+$list-color: (primary: $color-primary,
+        secondary: $color-secondary,
+        black: $color-black,
+        white: $color-white);
 
 // font
-$default-font-size: 1.125rem;
+$default-font-size: 1rem;
 $default-line-height: 1.5;
 
 // font family
@@ -31,6 +35,9 @@ sans-serif;
 $font-Lora: 'Lora',
 serif;
 $font-Muli: 'Muli', sans-serif;
+
+// list gap
+$list-gap: (zero: 0, big: 3.75rem, medium: 1.875rem, small: 1.25rem, xsmall: .625rem);
 
 // breakpoint
 $breakpoints: (phone: 576px,

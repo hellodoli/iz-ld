@@ -1,26 +1,38 @@
-.iz-navbar{
-    .iz-logo {
-        display: inline-block;
-        vertical-align: middle;
-        line-height: 1;
+.iz-logo {
+    display: inline-block;
+    vertical-align: middle;
+    line-height: 1;
+}
 
+.iz-navbar {
+    .iz-logo {
         img {
             display: block;
             max-width: none;
+
+            &.white {
+                display: none;
+            }
         }
     }
-}
 
+    &.iz-navbar--dark {
+        .iz-logo {
+            img {
+                &.white {
+                    display: block;
+                }
+                &.black {
+                    display: none;
+                }
+            }
+        }
+    }
 
-.iz-header {
     &--default {
         .iz-logo {
             img {
                 height: 18px;
-
-                &.white {
-                    display: none;
-                }
             }
         }
     }
@@ -35,6 +47,7 @@
 }
 
 .iz-footer {
+
     &--style-1 {
         .iz-logo {
             img {

@@ -33,3 +33,21 @@
         }
     }
 }
+
+.iz-footer {
+    &__socials {
+        $parent: &;
+
+        &--style-1 {
+            #{$parent}-item {
+                display: inline-flex;
+                font-size: 1rem;
+                margin-right: 1rem;
+            }
+
+            a {
+                color: var(--color-secondary);
+            }
+        }
+    }
+}

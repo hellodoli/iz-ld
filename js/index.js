@@ -1,6 +1,9 @@
-//-- HEADER
+//--- ELEMENTS
+// Navbar
 const NAVBAR_DEFAULT = '.iz-navbar';
 const NAVBAR_DEFAULT_FAKE = '.iz-navbar-fake';
+// Main
+const MAIN = '.iz-main';
 // Navigation default(desktop)
 const NAV_DEFAULT_NO_HASH = 'izNavDefault';
 const NAV_DEFAULT = '#' + NAV_DEFAULT_NO_HASH;
@@ -14,6 +17,7 @@ const NAV_MOBILE = '#' + NAV_MOBILE_NO_HASH;
 const NAV_MOBILE_MENU_NO_HASH = 'izNavMobileMenu';
 const NAV_MOBILE_MENU = '#' + NAV_MOBILE_MENU_NO_HASH;
 
+//--- HEADER FUNC
 function effectSubMenuHover($sfHover, duration, displayStyle = 'block') {
 
     $sfHover.on('mouseenter', function () {
@@ -89,7 +93,20 @@ function toggleNavMobile($toogleNavMobile, speed) {
     });
 }
 
-//--- FOOTER
+function scrollTopWindow($navbarFixed, offsetTop) {
+    const $window = $(window);
+    $window.on('scroll', function () {
+        if ($window.scrollTop() > offsetTop) {
+            if ($navbarFixed.hasClass('on-scroll-show')) $navbarFixed.removeClass('on-scroll-show');
+            $navbarFixed.addClass('on-scroll-hide');
+        } else {
+            if ($navbarFixed.hasClass('on-scroll-hide')) $navbarFixed.removeClass('on-scroll-hide');
+            $navbarFixed.addClass('on-scroll-show');
+        }
+    });
+}
+
+//--- FOOTER FUNC
 function checkFooterFixed($footer) {
     if ($footer.length === 1) {
         if ($footer.hasClass('iz-footer--fixed')) {
@@ -99,34 +116,13 @@ function checkFooterFixed($footer) {
     }
 }
 
-function scrollTopWindow($navbarFixed, offsetTop) {
-    $(window).on('scroll', function () {
-        if ($(this).scrollTop() > offsetTop) {
-            if ($navbarFixed.hasClass('on-scroll-show')) {
-                $navbarFixed.removeClass('on-scroll-show');
-            }
-            $navbarFixed.addClass('on-scroll-hide');
-        } else {
-            if ($navbarFixed.hasClass('on-scroll-hide')) {
-                $navbarFixed.removeClass('on-scroll-hide');
-            }
-            $navbarFixed.addClass('on-scroll-show');
-        }
-    });
-}
-
-//-- MAIN
+//-- MAIN FUNC
 function initHeaderAndFooter() {
-
-    var $navbarFixed = $(NAVBAR_DEFAULT + '.iz-navbar--fixed');
-    if ($navbarFixed && $navbarFixed.length == 1) {
-        scrollTopWindow($navbarFixed, 100);
-    }
 
     // 1/ HEADER
     // 1.1 - Navigation default
     //--- make all .sub-menu display: 'none'
-    var $navDefaultSubMenu = $(NAV_DEFAULT + ' ' + '.sub-menu');
+    const $navDefaultSubMenu = $(NAV_DEFAULT + ' ' + '.sub-menu');
     if ($navDefaultSubMenu && $navDefaultSubMenu.length > 0) {
         $navDefaultSubMenu.css({
             'display': 'none',
@@ -138,22 +134,14 @@ function initHeaderAndFooter() {
     //--- hover navigation desk
     navDesktopHover(200);
 
-    var $navbarDefaultFake = $(NAVBAR_DEFAULT_FAKE);
-    if ($navbarDefaultFake && $navbarDefaultFake.length > 0) {
-        var $navbarDefault = $(NAVBAR_DEFAULT);
-        $navbarDefaultFake.css({
-            'height': $navbarDefault.outerHeight()
-        });
-    }
-
     // 1.2 - Navigation Mobile
     const navMobileSpeedCollapse = 350;
 
     //--- display: none for menu
-    var $navMobile = $(NAV_MOBILE);
-    var $navMobileSubMenu = $(NAV_MOBILE_MENU + ' .sub-menu');
+    const $navMobile = $(NAV_MOBILE);
+    const $navMobileSubMenu = $(NAV_MOBILE_MENU + ' .sub-menu');
 
-    if ($navMobile && $navMobile.length == 1) {
+    if ($navMobile && $navMobile.length === 1) {
         $navMobile.css({
             'display': 'none'
         });
@@ -166,11 +154,11 @@ function initHeaderAndFooter() {
     }
 
     //--- click toggle
-    var $toggleBurger = $(NAV_TOGGLE_BURGER);
-    var $navMobileMenu = $(NAV_MOBILE_MENU);
-    var $toogleNavMobile = $(NAV_MOBILE_MENU + ' li.menu-item-has-child > a');
+    const $toggleBurger = $(NAV_TOGGLE_BURGER);
+    const $navMobileMenu = $(NAV_MOBILE_MENU);
+    const $toogleNavMobile = $(NAV_MOBILE_MENU + ' li.menu-item-has-child > a');
 
-    if ($toggleBurger && $toggleBurger.length == 1) {
+    if ($toggleBurger && $toggleBurger.length === 1) {
         $toggleBurger.on('click', function () {
             var $this = $(this);
             if ($this.hasClass('opened')) {
@@ -198,12 +186,22 @@ function initHeaderAndFooter() {
         });
     }
 
-    if ($toogleNavMobile && $toogleNavMobile.length > 0) {
-        toggleNavMobile($toogleNavMobile, navMobileSpeedCollapse);
+    if ($toogleNavMobile && $toogleNavMobile.length > 0) toggleNavMobile($toogleNavMobile, navMobileSpeedCollapse);
+
+    // 1.3 - Scroll fixed header
+    const $navbarDefaultFake = $(NAVBAR_DEFAULT_FAKE);
+    if ($navbarDefaultFake && $navbarDefaultFake.length === 1) {
+        //--- cal navbar fake
+        $navbarDefaultFake.css({ 'height': $(NAVBAR_DEFAULT).outerHeight() });
+        //--- scroll fixed
+        var $navbarFixed = $(NAVBAR_DEFAULT + '.iz-navbar--fixed');
+        if ($navbarFixed && $navbarFixed.length === 1) {
+            const offset = $(MAIN).offset().top + 20;
+            scrollTopWindow($navbarFixed, offset);
+        }
     }
 
-
     // 2/ FOOTER
-    var $footer = $('.iz-footer');
+    const $footer = $('.iz-footer');
     checkFooterFixed($footer);
 }

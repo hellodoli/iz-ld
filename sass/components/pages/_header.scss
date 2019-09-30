@@ -1,4 +1,5 @@
 $border-color-nav-mobile: #eee;
+$navbar-dark: #191919;
 
 .iz-header {
     position: relative;
@@ -133,28 +134,10 @@ $border-color-nav-mobile: #eee;
     &__item {
         @include flex-vertical-center;
     }
-}
 
-@keyframes fadeOutUp {
-    0% {
-        opacity: 1;
-    }
-
-    100% {
-        opacity: 0;
-        transform: translate3d(0, -100%, 0);
-    }
-}
-
-@keyframes fadeInDown {
-    0% {
-        opacity: 0;
-        transform: translate3d(0, -100%, 0);
-    }
-
-    100% {
-        opacity: 1;
-        transform: translate3d(0, 0, 0);
+    &.iz-navbar--dark {
+        background: $navbar-dark;
+        color: var(--color-white);
     }
 }
 

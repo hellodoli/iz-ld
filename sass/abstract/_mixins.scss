@@ -37,23 +37,19 @@
 
 // MEDIA QUERIES MANAGER
 /*
-375px-
-376px - 479px       Mini Phone
-480px - 575px       Phone
-576px - 767px       Max Phone
+576px               Mini Phone
+576px - 767px       Phone
 768px - 991px       Tablet
 992px - 1199px      Laptop
-1200px+             Big desktop
+1200px+             Desktop
 */
 
 /*
     $breakpoint choices:
-    - mini-phone
-    - phone
-    - max-phone
-    - tablet
-    - laptop
-    - desktop
+    - phone - sm
+    - tablet - md
+    - laptop - lg
+    - desktop - xl
     ORDER: base + typography > general layout + grid > page layout > components
 */
 @mixin respond-above($breakpoint) {
