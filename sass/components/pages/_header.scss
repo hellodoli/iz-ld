@@ -1,5 +1,5 @@
-$border-color-nav-mobile: #eee;
-$navbar-dark: #191919;
+$color-border-nav-mobile: #eee;
+$color-navbar-dark: #191919;
 
 .iz-header {
     position: relative;
@@ -11,7 +11,7 @@ $navbar-dark: #191919;
 
     &--mobile {
         .iz-navbar {
-            border-bottom: 1px solid $border-color-nav-mobile;
+            border-bottom: 1px solid $color-border-nav-mobile;
         }
     }
 }
@@ -53,6 +53,15 @@ $navbar-dark: #191919;
     cursor: pointer;
 
     $parent: &;
+
+    &:hover {
+        #{$parent}__line--1 span {
+            transform: translateY(-1px);
+        }
+        #{$parent}__line--3 span {
+            transform: translateY(1px);
+        }
+    }
 
     &__line {
         display: block;
@@ -136,8 +145,11 @@ $navbar-dark: #191919;
     }
 
     &.iz-navbar--dark {
-        background: $navbar-dark;
+        background: $color-navbar-dark;
         color: var(--color-white);
+    }
+    &.iz-navbar--transparent {
+        background: transparent;
     }
 }
 
@@ -348,7 +360,7 @@ $bg-submenu: #262626;
     top: calc(100% + 1px);
     width: 100%;
     background: var(--color-white);
-    border-bottom: 1px solid $border-color-nav-mobile;
+    border-bottom: 1px solid $color-border-nav-mobile;
 
     &__menu {
 
@@ -406,7 +418,7 @@ $bg-submenu: #262626;
             position: relative;
             padding: .875rem 0;
             color: var(--color-black);
-            border-bottom: 1px dashed $border-color-nav-mobile;
+            border-bottom: 1px dashed $color-border-nav-mobile;
             display: flex;
             align-items: center;
             justify-content: space-between;

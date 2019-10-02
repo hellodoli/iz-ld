@@ -1,0 +1,19 @@
+.iz-jarallax {
+    position: relative;
+    padding: 170px 0;
+    z-index: 0;
+
+    &--medium {
+        padding: 280px 0;
+    }
+
+    &__overlay {
+        position: absolute;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(44, 44, 44, .5);
+    }
+}

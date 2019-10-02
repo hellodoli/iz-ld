@@ -190,18 +190,51 @@ function initHeaderAndFooter() {
 
     // 1.3 - Scroll fixed header
     const $navbarDefaultFake = $(NAVBAR_DEFAULT_FAKE);
-    if ($navbarDefaultFake && $navbarDefaultFake.length === 1) {
+    const $navbarFixed = $(NAVBAR_DEFAULT + '.iz-navbar--fixed');
+    if (( $navbarDefaultFake && $navbarDefaultFake.length === 1 ) && ( $navbarFixed && $navbarFixed.length === 1 )) {
         //--- cal navbar fake
         $navbarDefaultFake.css({ 'height': $(NAVBAR_DEFAULT).outerHeight() });
         //--- scroll fixed
-        var $navbarFixed = $(NAVBAR_DEFAULT + '.iz-navbar--fixed');
-        if ($navbarFixed && $navbarFixed.length === 1) {
-            const offset = $(MAIN).offset().top + 20;
-            scrollTopWindow($navbarFixed, offset);
-        }
+        const offset = $(MAIN).offset().top + 20;
+        scrollTopWindow($navbarFixed, offset);
     }
 
     // 2/ FOOTER
     const $footer = $('.iz-footer');
     checkFooterFixed($footer);
+}
+
+function initJarallax() {
+    const $izJarallax = $('.iz-jarallax');
+    if($izJarallax && $izJarallax.length > 0) {
+        $izJarallax.jarallax();
+    }
+}
+
+function initCubePortfolio() {
+    $('#iz-portfolio-grid-01').cubeportfolio({
+        // options
+        gapHorizontal: 35,
+        gapVertical: 30,
+        layoutMode: 'grid',
+        gridAdjustment: 'responsive',
+        mediaQueries: [{
+            width: 1500,
+            cols: 5,
+        }, {
+            width: 1100,
+            cols: 4,
+        }, {
+            width: 800,
+            cols: 3,
+        }, {
+            width: 480,
+            cols: 2,
+            options: {
+                caption: '',
+                gapHorizontal: 30,
+                gapVertical: 10,
+            }
+        }],
+    });
 }

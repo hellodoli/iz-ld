@@ -27,12 +27,12 @@ body {
 }
 
 html {
-    font-size: 112.5%; // 1rem = 18px
+    font-size: 100%; // 1rem = 16px
 }
 
 body {
     font-family: var(--font-family-text);
-    font-size: var(--default-font-size);
+    font-size: 1.125rem;
     font-weight: var(--font-weight-normal);
     color: var(--color-gray);
     background: var(--color-white);
