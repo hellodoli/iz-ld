@@ -16,7 +16,8 @@
         }
     }
 
-    &.iz-navbar--dark {
+    &.iz-navbar--dark, 
+    &.iz-navbar--transparent {
         .iz-logo {
             img {
                 &.white {

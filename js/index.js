@@ -212,12 +212,55 @@ function initJarallax() {
 }
 
 function initCubePortfolio() {
-    $('#iz-portfolio-grid-01').cubeportfolio({
+    $('.iz-portfolio__container').each(function () {
+        var t = $(this);
+        var d = this.dataset;
+        const filters = '#' + t.prev().attr('id');
+        const layoutMode = d.layoutMode || 'grid';
+        const gridAdjustment = d.gridAdjustment || 'responsive';
+        const gapHorizontal = parseInt(d.gapHorizontal) || 35;
+        const gapVertical = parseInt(d.gapVertical) || 30;
+        const mediaQueries = [
+            {
+                width: 1500,
+                cols: 5
+            },
+            {
+                width: 1100,
+                cols: 4
+            },
+            {
+                width: 800,
+                cols: 3
+            },
+            {
+                width: 480,
+                cols: 2,
+                options: {
+                    caption: '',
+                    gapHorizontal: 30,
+                    gapVertical: 10
+                }
+            }
+        ];
+        
+        $(this).cubeportfolio({
+            filters: filters,
+            layoutMode: layoutMode,
+            gridAdjustment: gridAdjustment,
+            gapHorizontal: gapHorizontal,
+            gapVertical: gapVertical,
+            mediaQueries: mediaQueries,
+            defaultFilter: '*',
+            animationType: 'slideLeft',
+            caption: 'zoom',
+        });
+    });
+
+
+    /*$('#iz-portfolio-grid-01').cubeportfolio({
         // options
-        gapHorizontal: 35,
-        gapVertical: 30,
-        layoutMode: 'grid',
-        gridAdjustment: 'responsive',
+
         mediaQueries: [{
             width: 1500,
             cols: 5,
@@ -236,5 +279,5 @@ function initCubePortfolio() {
                 gapVertical: 10,
             }
         }],
-    });
+    });*/
 }

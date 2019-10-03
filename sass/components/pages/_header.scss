@@ -150,6 +150,7 @@ $color-navbar-dark: #191919;
     }
     &.iz-navbar--transparent {
         background: transparent;
+        color: var(--color-white);
     }
 }
 
