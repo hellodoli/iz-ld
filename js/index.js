@@ -93,20 +93,31 @@ function toggleNavMobile($toogleNavMobile, speed) {
     });
 }
 
+var shouldScrollHide = true;
 function scrollTopWindow($navbarFixed, offsetTop) {
     const $window = $(window);
     $window.on('scroll', function () {
         if ($window.scrollTop() > offsetTop) {
-            if ($navbarFixed.hasClass('on-scroll-show')) $navbarFixed.removeClass('on-scroll-show');
-            $navbarFixed.addClass('on-scroll-hide');
 
+            if(shouldScrollHide) {
+                if ($navbarFixed.hasClass('on-scroll-show')) {
+                    $navbarFixed.removeClass('on-scroll-show');
+                    $navbarFixed.addClass('on-scroll-hide');
+                }
+            }
+            
             var windowScrollHeight = document.documentElement.scrollHeight;
             if(windowScrollHeight - window.pageYOffset === window.innerHeight) {
-                console.log('last scroll');
+                if ($navbarFixed.hasClass('on-scroll-hide')) $navbarFixed.removeClass('on-scroll-hide');
+                $navbarFixed.addClass('on-scroll-show');
+                shouldScrollHide = false;
             }
         } else {
-            if ($navbarFixed.hasClass('on-scroll-hide')) $navbarFixed.removeClass('on-scroll-hide');
-            $navbarFixed.addClass('on-scroll-show');
+            if($navbarFixed.hasClass('on-scroll-hide')) {
+                $navbarFixed.removeClass('on-scroll-hide');
+                $navbarFixed.addClass('on-scroll-show');
+            }
+            shouldScrollHide = true;
         }
     });
 }
@@ -194,13 +205,13 @@ function initHeaderAndFooter() {
     if ($toogleNavMobile && $toogleNavMobile.length > 0) toggleNavMobile($toogleNavMobile, navMobileSpeedCollapse);
 
     // 1.3 - Scroll fixed header
-    const $navbarDefaultFake = $(NAVBAR_DEFAULT_FAKE);
     const $navbarFixed = $(NAVBAR_DEFAULT + '.iz-navbar--fixed');
-    if (( $navbarDefaultFake && $navbarDefaultFake.length === 1 ) && ( $navbarFixed && $navbarFixed.length === 1 )) {
+    if ( $navbarFixed && $navbarFixed.length === 1 ) {
         //--- cal navbar fake
-        $navbarDefaultFake.css({ 'height': $(NAVBAR_DEFAULT).outerHeight() });
+        const $navbarDefaultFake = $(NAVBAR_DEFAULT_FAKE);
+        if($navbarDefaultFake.length === 1) $navbarDefaultFake.css({ 'height': $(NAVBAR_DEFAULT).outerHeight() });
         //--- scroll fixed
-        const offset = $(MAIN).offset().top + 20;
+        const offset = $(MAIN).offset().top + 10;
         scrollTopWindow($navbarFixed, offset);
     }
 
