@@ -1,5 +1,5 @@
 .iz-page{
-    &__typrography-button{
+    &-typrography__button{
         .btn-group{
             @include respond-below(laptop) {
                 flex-wrap: wrap;

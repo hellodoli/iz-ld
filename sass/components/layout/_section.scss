@@ -4,6 +4,20 @@
         margin-bottom: 1.875rem;
     }
 
+    &-wrapp {
+        padding: 5rem 0;
+        &.no-pd-top {
+            padding-top: 0;
+        }
+        &.no-pd-bottom {
+            padding-bottom: 0;
+        }
+        &.no-pd {
+            padding-top: 0;
+            padding-bottom: 0;
+        }
+    }
+
     &__title {
         font-size: 1.75rem;
         line-height: 1.5;

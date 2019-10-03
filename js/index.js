@@ -99,6 +99,11 @@ function scrollTopWindow($navbarFixed, offsetTop) {
         if ($window.scrollTop() > offsetTop) {
             if ($navbarFixed.hasClass('on-scroll-show')) $navbarFixed.removeClass('on-scroll-show');
             $navbarFixed.addClass('on-scroll-hide');
+
+            var windowScrollHeight = document.documentElement.scrollHeight;
+            if(windowScrollHeight - window.pageYOffset === window.innerHeight) {
+                console.log('last scroll');
+            }
         } else {
             if ($navbarFixed.hasClass('on-scroll-hide')) $navbarFixed.removeClass('on-scroll-hide');
             $navbarFixed.addClass('on-scroll-show');
@@ -214,70 +219,67 @@ function initJarallax() {
 function initCubePortfolio() {
     $('.iz-portfolio__container').each(function () {
         var t = $(this);
-        var d = this.dataset;
-        const filters = '#' + t.prev().attr('id');
-        const layoutMode = d.layoutMode || 'grid';
-        const gridAdjustment = d.gridAdjustment || 'responsive';
-        const gapHorizontal = parseInt(d.gapHorizontal) || 35;
-        const gapVertical = parseInt(d.gapVertical) || 30;
-        const mediaQueries = [
-            {
-                width: 1500,
-                cols: 5
-            },
-            {
-                width: 1100,
-                cols: 4
-            },
-            {
-                width: 800,
-                cols: 3
-            },
-            {
-                width: 480,
-                cols: 2,
-                options: {
-                    caption: '',
-                    gapHorizontal: 30,
-                    gapVertical: 10
+        var $portfolioFilters = t.parent().find('.iz-portfolio__filters');
+        if($portfolioFilters.length === 1) {
+
+            var d = this.dataset;
+
+            let loadMore = '';
+            var $portfolioLoadMore = t.parent().find('.iz-portfolio__load-more');
+            if ($portfolioLoadMore.length === 1) {
+                loadMore = `#${$portfolioLoadMore.attr('id')}`;
+            }
+            
+            const filters = `#${$portfolioFilters.attr('id')}` || '';
+            const layoutMode = d.layoutMode || 'grid';
+            const gridAdjustment = d.gridAdjustment || 'responsive';
+            const gapHorizontal = parseInt(d.gapHorizontal) || 35;
+            const gapVertical = parseInt(d.gapVertical) || 30;
+            const mediaQueries = [
+                {
+                    width: 1500,
+                    cols: 5
+                },
+                {
+                    width: 1100,
+                    cols: 4
+                },
+                {
+                    width: 800,
+                    cols: 3
+                },
+                {
+                    width: 600,
+                    cols: 2,
+                    options: {
+                        gapHorizontal: 15,
+                        gapVertical: 15
+                    }
+                },
+                {
+                    width: 320,
+                    cols: 1,
+                    options: {
+                        gapHorizontal: 15,
+                        gapVertical: 15
+                    }
                 }
-            }
-        ];
-        
-        $(this).cubeportfolio({
-            filters: filters,
-            layoutMode: layoutMode,
-            gridAdjustment: gridAdjustment,
-            gapHorizontal: gapHorizontal,
-            gapVertical: gapVertical,
-            mediaQueries: mediaQueries,
-            defaultFilter: '*',
-            animationType: 'slideLeft',
-            caption: 'zoom',
-        });
+            ];
+            const animationType = d.animationType || 'fadeOut';
+            const loadMoreAction = d.loadMoreAction || 'click';
+            
+            $(this).cubeportfolio({
+                filters: filters,
+                loadMore: loadMore,
+                loadMoreAction: loadMoreAction,
+                layoutMode: layoutMode,
+                gridAdjustment: gridAdjustment,
+                gapHorizontal: gapHorizontal,
+                gapVertical: gapVertical,
+                mediaQueries: mediaQueries,
+                defaultFilter: '*',
+                animationType: animationType,
+            });
+        }
     });
-
-
-    /*$('#iz-portfolio-grid-01').cubeportfolio({
-        // options
-
-        mediaQueries: [{
-            width: 1500,
-            cols: 5,
-        }, {
-            width: 1100,
-            cols: 4,
-        }, {
-            width: 800,
-            cols: 3,
-        }, {
-            width: 480,
-            cols: 2,
-            options: {
-                caption: '',
-                gapHorizontal: 30,
-                gapVertical: 10,
-            }
-        }],
-    });*/
 }

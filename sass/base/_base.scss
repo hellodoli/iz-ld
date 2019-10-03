@@ -9,6 +9,7 @@
     --color-secondary: #{$color-secondary};
     --color-black: #{$color-black};
     --color-gray: #{$color-gray-dark-6};
+    --color-dark: #{$color-dark};
     --color-white: #{$color-white};
 
     --default-font-size: #{$default-font-size};
@@ -65,11 +66,15 @@ a {
 }
 
 a:active,
-a:focus,
+a:hover,
+a:focus {
+    outline: 0;
+}
+
+a:active,
 a:hover {
     color: var(--color-primary);
     text-decoration: none;
-    outline: 0;
 }
 
 .h1,
