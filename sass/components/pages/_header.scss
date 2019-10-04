@@ -118,7 +118,7 @@ $color-navbar-dark: #191919;
     background: var(--color-white);
     z-index: 30;
 
-    &--fixed {
+    &.iz-navbar--fixed {
         position: fixed;
         left: 0;
         top: 0;
@@ -144,13 +144,16 @@ $color-navbar-dark: #191919;
         @include flex-vertical-center;
     }
 
-    &.iz-navbar--dark {
-        background: $color-navbar-dark;
+    &.iz-navbar--white-text-on-top {
         color: var(--color-white);
     }
+
+    &.iz-navbar--dark {
+        background: $color-navbar-dark;
+    }
+
     &.iz-navbar--transparent {
         background: transparent;
-        color: var(--color-white);
     }
 }
 
@@ -428,5 +431,27 @@ $bg-submenu: #262626;
                 color: var(--color-primary);
             }
         }
+    }
+}
+
+.iz-navigation-full-screen-holder {
+    @include flex-center;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--color-dark);
+    z-index: 999;
+    pointer-events: none;
+    opacity: 0;
+    visibility: hidden;
+    transition: all .3s linear;
+
+    &.is-open {
+        pointer-events: auto;
+        opacity: 1;
+        visibility: visible;
     }
 }

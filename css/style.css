@@ -1508,15 +1508,15 @@ p.iz-drop-cap:not(:focus)::first-letter {
   position: relative;
   background: var(--color-white);
   z-index: 30; }
-  .iz-navbar--fixed {
+  .iz-navbar.iz-navbar--fixed {
     position: fixed;
     left: 0;
     top: 0;
     width: 100%;
     transition: all .3s ease-in-out; }
-    .iz-navbar--fixed.on-scroll-show {
+    .iz-navbar.iz-navbar--fixed.on-scroll-show {
       animation: fadeInDown .3s linear forwards; }
-    .iz-navbar--fixed.on-scroll-hide {
+    .iz-navbar.iz-navbar--fixed.on-scroll-hide {
       animation: fadeOutUp .3s linear forwards; }
   .iz-navbar__wrapper {
     position: relative;
@@ -1527,12 +1527,12 @@ p.iz-drop-cap:not(:focus)::first-letter {
   .iz-navbar__item {
     display: flex;
     align-items: center; }
+  .iz-navbar.iz-navbar--white-text-on-top {
+    color: var(--color-white); }
   .iz-navbar.iz-navbar--dark {
-    background: #191919;
-    color: var(--color-white); }
+    background: #191919; }
   .iz-navbar.iz-navbar--transparent {
-    background: transparent;
-    color: var(--color-white); }
+    background: transparent; }
 
 ul[class*='iz-navigation-'] {
   margin: 0;
@@ -1701,6 +1701,27 @@ ul[class*='iz-navigation-'] {
     justify-content: space-between; }
     .iz-navigation-mobile__menu a:hover {
       color: var(--color-primary); }
+
+.iz-navigation-full-screen-holder {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--color-dark);
+  z-index: 999;
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: all .3s linear; }
+  .iz-navigation-full-screen-holder.is-open {
+    pointer-events: auto;
+    opacity: 1;
+    visibility: visible; }
 
 @media (max-width: 991px) {
   .iz-page-typrography__button .btn-group {
@@ -2240,10 +2261,10 @@ ul.iz-uo-menu {
   .iz-navbar .iz-logo img.white {
     display: none; }
 
-.iz-navbar.iz-navbar--dark .iz-logo img.white, .iz-navbar.iz-navbar--transparent .iz-logo img.white {
+.iz-navbar.iz-navbar--white-text-on-top .iz-logo img.white {
   display: block; }
 
-.iz-navbar.iz-navbar--dark .iz-logo img.black, .iz-navbar.iz-navbar--transparent .iz-logo img.black {
+.iz-navbar.iz-navbar--white-text-on-top .iz-logo img.black {
   display: none; }
 
 .iz-navbar--default .iz-logo img {
