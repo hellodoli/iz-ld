@@ -12,9 +12,15 @@ const NAV_DEFAULT_MENU = '#' + NAV_DEFAULT_MENU_NO_HASH;
 
 const NAV_TOGGLE_BURGER_DESKTOP_NO_HASH = 'izMenuBurgerDesktop';
 const NAV_TOGGLE_BURGER_DESKTOP = '#' + NAV_TOGGLE_BURGER_DESKTOP_NO_HASH;
+const NAV_TOGGLE_BURGER_CLOSE_DESKTOP_NO_HASH = 'izMenuBurgerCloseDesk';
+const NAV_TOGGLE_BURGER_CLOSE_DESKTOP = '#' + NAV_TOGGLE_BURGER_CLOSE_DESKTOP_NO_HASH;
+
+const NAV_SOLID_HOLDER_NO_HASH = 'izNavSolidHolder';
+const NAV_SOLID_HOLDER = '#' + NAV_SOLID_HOLDER_NO_HASH;
+const NAV_SOLID_NO_HASH = 'izNavSolid';
+const NAV_SOLID = '#' + NAV_SOLID_NO_HASH;
 const NAV_SOLID_MENU_NO_HASH = 'izNavSolidMenu';
 const NAV_SOLID_MENU = '#' + NAV_SOLID_MENU_NO_HASH;
-
 // Navigation mobile
 const NAV_TOGGLE_BURGER_NO_HASH = 'izMenuBurger';
 const NAV_TOGGLE_BURGER = '#' + NAV_TOGGLE_BURGER_NO_HASH;
@@ -25,7 +31,8 @@ const NAV_MOBILE_MENU = '#' + NAV_MOBILE_MENU_NO_HASH;
 // Scroll Header Style
 const SCROLL_NAVBAR_STYLE_DEFAULT = 'SCROLL_NAVBAR_STYLE_DEFAULT';
 const SCROLL_NAVBAR_STYLE_SOLID = 'SCROLL_NAVBAR_STYLE_SOLID';
-
+//
+const navSpeedCollapse = 350;
 
 //--- HEADER FUNC
 function effectSubMenuHover($sfHover, duration, displayStyle = 'block') {
@@ -77,9 +84,10 @@ function navDesktopHover(speed) {
     if ($sfHover_02.length > 0) effectSubMenuHover($sfHover_02, speed);
 }
 
-function toggleNavMobile($toogleNavMobile, speed) {
-    $toogleNavMobile.on('click', function (e) {
+function toggleNav($toogleNav, speed) {
+    $toogleNav.on('click', function (e) {
         e.preventDefault();
+        e.stopPropagation();
         var $this = $(this);
         var $subMenu = $this.next('.sub-menu');
         if ($subMenu && $subMenu.length == 1) {
@@ -103,31 +111,39 @@ function toggleNavMobile($toogleNavMobile, speed) {
     });
 }
 
-function toggleBurgerNavMobile($toggleBurger, $navMobileMenu, $navMobile, navMobileSpeedCollapse) {
-
-
-    $toggleBurger.on('click', function () {
+function closeNavMenu($navMenu, navSpeedCollapse) {
+    if ($navMenu.length > 0) {
+        $navMenu.find('li.menu-item-has-child .sub-menu').removeClass('show');
+        $navMenu.find('li.menu-item-has-child .sub-menu').slideUp(navSpeedCollapse);
+        $navMenu.find('li.menu-item-has-child a').removeClass('opened');
+    }
+}
+/* 
+    - parameter:
+        1. $toggleBurger: toggle Button
+        2. $navMenu: ul menu
+        3. $nav: nav menu wrapp ul menu
+        4. collapse speed collapse
+*/
+function toggleBurgerNav($toggleBurger, $navMenu, $nav, navSpeedCollapse) {
+    $toggleBurger.on('click', function (e) {
+        e.stopPropagation();
         var $this = $(this);
         if ($this.hasClass('opened')) {
             // close nav mobile
-            if ($navMobileMenu.length > 0) {
-                $navMobileMenu.find('li.menu-item-has-child .sub-menu').removeClass('show');
-                $navMobileMenu.find('li.menu-item-has-child .sub-menu').slideUp(navMobileSpeedCollapse);
-                $navMobileMenu.find('li.menu-item-has-child a').removeClass('opened');
-            }
+            closeNavMenu($navMenu, navSpeedCollapse);
 
-            if ($navMobile.length > 0) {
-                $navMobile.removeClass('show');
+            if ($nav.length > 0) {
+                $nav.removeClass('show');
                 $this.removeClass('opened');
-                $navMobile.slideUp(navMobileSpeedCollapse);
+                $nav.slideUp(navSpeedCollapse);
             }
-
         } else {
             // open nav mobile
-            if ($navMobile.length > 0) {
+            if ($nav.length > 0) {
                 $this.addClass('opened');
-                $navMobile.addClass('show');
-                $navMobile.slideDown(navMobileSpeedCollapse);
+                $nav.addClass('show');
+                $nav.slideDown(navSpeedCollapse);
             }
         }
     });
@@ -185,7 +201,6 @@ function checkHasClassSolid($navbarFixed) {
         }
     }, 200);
 }
-
 function scrollNavbarSolid($navbarFixed, offsetTop) {
 
     console.log('page will scroll SOLID style');
@@ -252,15 +267,49 @@ function initHeaderFixedScrollDefault() {
 
 function initHeaderFixedScrollSolid() {
     console.log('page with SOLID NAVBAR');
-    const $toggleBurgerDesk = $(NAV_TOGGLE_BURGER_DESKTOP);
-    if($toggleBurgerDesk && $toggleBurgerDesk.length === 1) {
-        const $navSolidMenu = $(NAV_SOLID_MENU);
-        $toggleBurgerDesk.on('click', function() {
-            if( $navSolidMenu && $navSolidMenu.length === 1 ) {
-                $navSolidMenu.addClass('is-open');
+    //---
+    const $navSolidSubmenu = $(NAV_SOLID_MENU + ' .sub-menu');
+    if( $navSolidSubmenu && $navSolidSubmenu.length > 0 ) $navSolidSubmenu.css({ display: 'none' });
+    
+    //---
+    const $navSolidHolder = $(NAV_SOLID_HOLDER);
+    if( $navSolidHolder && $navSolidHolder.length === 1 ) {
+
+        const $toggleBurgerDesk = $(NAV_TOGGLE_BURGER_DESKTOP);
+        if( $toggleBurgerDesk && $toggleBurgerDesk.length === 1 ) {
+            $toggleBurgerDesk.on('click', function(e) {
+                e.stopPropagation();
+                if( !$navSolidHolder.hasClass('is-open') ) $navSolidHolder.addClass('is-open');
+            });
+        }
+
+        const $toggleBurgerCloseDesk = $(NAV_TOGGLE_BURGER_CLOSE_DESKTOP);
+        if( $toggleBurgerCloseDesk && $toggleBurgerCloseDesk.length === 1 ) {
+            $toggleBurgerCloseDesk.on('click', function(e) {
+                e.stopPropagation();
+                if( $navSolidHolder.hasClass('is-open') ) $navSolidHolder.removeClass('is-open');
+            });
+        }
+
+        $(document).on('click', function (e) {
+            if( $navSolidHolder.hasClass('is-open') ) {
+                const $navSolidHolderLogo = $(NAV_SOLID_HOLDER + ' .iz-logo img');
+                const $navSolidMenu = $(NAV_SOLID_MENU);
+                const $navSolid = $(NAV_SOLID);
+
+                if( !$navSolidHolderLogo.is(e.target) && $navSolid.has(e.target).length === 0 ) {
+                    closeNavMenu($navSolidMenu, navSpeedCollapse);
+                }
             }
         });
     }
+
+    //---
+    const $toogleNavSolid = $(NAV_SOLID_MENU + ' li.menu-item-has-child > a');
+    if( $toogleNavSolid && $toogleNavSolid.length > 0 ) {
+        toggleNav($toogleNavSolid, navSpeedCollapse);
+    }
+
 }
 
 function initHeaderAndFooter(scrollNavbarStyle = SCROLL_NAVBAR_STYLE_DEFAULT) {
@@ -274,8 +323,6 @@ function initHeaderAndFooter(scrollNavbarStyle = SCROLL_NAVBAR_STYLE_DEFAULT) {
     }
 
     // 1.2 - Navigation Mobile
-    const navMobileSpeedCollapse = 350;
-
     //--- display: none for menu
     const $navMobile = $(NAV_MOBILE);
     const $navMobileSubMenu = $(NAV_MOBILE_MENU + ' .sub-menu');
@@ -289,11 +336,11 @@ function initHeaderAndFooter(scrollNavbarStyle = SCROLL_NAVBAR_STYLE_DEFAULT) {
     const $toogleNavMobile = $(NAV_MOBILE_MENU + ' li.menu-item-has-child > a');
 
     if ($toggleBurger && $toggleBurger.length === 1) {
-        toggleBurgerNavMobile($toggleBurger, $navMobileMenu, $navMobile, navMobileSpeedCollapse);
+        toggleBurgerNav($toggleBurger, $navMobileMenu, $navMobile, navSpeedCollapse);
     }
     
     if ($toogleNavMobile && $toogleNavMobile.length > 0) {
-        toggleNavMobile($toogleNavMobile, navMobileSpeedCollapse);
+        toggleNav($toogleNavMobile, navSpeedCollapse);
     }
 
     // 1.3 - Scroll fixed

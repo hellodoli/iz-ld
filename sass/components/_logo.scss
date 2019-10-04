@@ -29,7 +29,7 @@
         }
     }
 
-    &--default {
+    &.iz-navbar--default {
         .iz-logo {
             img {
                 height: 18px;
@@ -37,7 +37,7 @@
         }
     }
 
-    &--mobile{
+    &.iz-navbar--mobile{
         .iz-logo{
             img{
                 height: 26px;
